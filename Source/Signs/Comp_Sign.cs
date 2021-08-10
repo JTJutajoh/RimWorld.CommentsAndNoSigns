@@ -247,6 +247,32 @@ namespace Dark.Signs
             return size;
         }
 
+        // returns the direction-specific offset for the current rotation if defined. If not, returns the generic labelOffset
+        private Vector2 GetLabelOffset()
+        {
+            Rot4 rot = this.parent.Rotation;
+            Vector2 result;
+            // switch statement won't work here because the Rot4 shortcuts aren't const i guess. whatever
+            if (rot == Rot4.South)
+            {
+                return Props?.labelOffset_South ?? Props?.labelOffset ?? new Vector2();
+            }
+            else if (rot == Rot4.North)
+            {
+                return Props?.labelOffset_North ?? Props?.labelOffset ?? new Vector2();
+            }
+            else if (rot == Rot4.West)
+            {
+                return Props?.labelOffset_West ?? Props?.labelOffset ?? new Vector2();
+            }
+            else if (rot == Rot4.East)
+            {
+                return Props?.labelOffset_East ?? Props?.labelOffset ?? new Vector2();
+            }
+            // shouldn't be possible but maybe
+            return new Vector2();
+        }
+
         private Vector2 GetSignLabelPos()
         {
             /*IntVec3 signPos = this.parent.OccupiedRect().CenterCell;// this.parent.Position;
@@ -259,9 +285,10 @@ namespace Dark.Signs
 
             Vector3 position = GenThing.TrueCenter(this.parent);
             position.y += (float)AltitudeLayer.MetaOverlays;
-            position.x += Props.labelOffset.x;
-            position.z += Props.labelOffset.y;
-            position.z += Settings.worldVerticalOffset;
+            Vector2 offset = GetLabelOffset();
+            position.x += offset.x;
+            position.z += offset.y;
+            position.z += Settings.worldVerticalOffset; // TODO reevaluate this
             Vector2 vector = Find.Camera.WorldToScreenPoint(position) / Prefs.UIScale;
             vector.y = (float)UI.screenHeight - vector.y;
             vector.y -= 1f;
@@ -445,6 +472,10 @@ namespace Dark.Signs
         public bool canBeEmpty = false;
         public string defaultContents = "Empty sign";
         public Vector2 labelOffset = new Vector2(0, 0);
+        public Vector2? labelOffset_East;
+        public Vector2? labelOffset_West;
+        public Vector2? labelOffset_South;
+        public Vector2? labelOffset_North;
 
         public CompProperties_Sign()
         {

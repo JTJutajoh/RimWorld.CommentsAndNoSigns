@@ -18,6 +18,7 @@
             <canEditContent>true</canEditContent>
             <canBeEmpty>true</canBeEmpty>
             <defaultContents></defaultContents>
+            <labelOffset>(0,0.85)</labelOffset>
           </li>
         </comps>
       </value>
@@ -29,6 +30,7 @@
           <canEditContent>true</canEditContent>
           <canBeEmpty>true</canBeEmpty>
           <defaultContents></defaultContents>
+          <labelOffset>(0,0.85)</labelOffset>
         </li>
       </value>
     </match>

@@ -20,6 +20,7 @@
       <ai_neverTrashThis>true</ai_neverTrashThis>
     </building>
     <minifiedDef>MinifiedThing</minifiedDef>
+    <rotatable>false</rotatable>
     <thingCategories>
       <li>BuildingsMisc</li>
     </thingCategories>
@@ -29,7 +30,7 @@
   <!-- TODO Add an artable sign subclass for memorials -->
   <!--============================== Special ==============================-->
   <!--============================== Comment ==============================-->
-  <ThingDef ParentName="SignWithCustomLabelBase" index="0">
+  <ThingDef ParentName="SignWithCustomLabelBase">
     <defName>Comment</defName>
     <label>comment</label>
     <description>Leave comments to plan ahead or mark things to be remembered.
@@ -65,12 +66,13 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <graphicData>
       <texPath>Things/Buildings/Signs/Comment</texPath>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>MetaOverlay</shaderType>
       <drawSize>(1,1)</drawSize>
     </graphicData>
   </ThingDef>
   
   <!--============================== Room sign ==============================-->
-  <ThingDef ParentName="SignBuildingBase" index="1">
+  <ThingDef ParentName="SignBuildingBase">
     <defName>RoomSign</defName>
     <label>room sign</label>
     <description>A sign that automatically takes the name of the room it is placed in as its label and updates if the role of the room changes.</description>
@@ -114,7 +116,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
   </ThingDef>
 
   <!--============================== Simple signs ==============================-->
-  <ThingDef ParentName="SignBuildingBase" index="2">
+  <ThingDef ParentName="SignBuildingBase">
     <defName>SimpleSign</defName>
     <label>simple sign</label>
     <description>A simple sign that can have anything written on it to help remember things or mark things for the future.</description>
@@ -159,7 +161,10 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <building>
       <isEdifice>false</isEdifice>
     </building>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
     <clearBuildingArea>false</clearBuildingArea>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <fillPercent>0</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -171,55 +176,70 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </statBases>
   </ThingDef>
 
-  <ThingDef ParentName="SignWallBase" index="3">
+  <ThingDef ParentName="SignWallBase">
     <defName>SignWallBasic</defName>
     <label>wall sign</label>
     <description>A simple sign that can be hung on walls or doors.</description>
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
-        <labelOffset>(0,-0.8)</labelOffset>
+        <labelOffset_North>(0,0.2)</labelOffset_North>
+        <labelOffset_South>(0,-0.65)</labelOffset_South>
+        <labelOffset_West>(-0.5,-0.3)</labelOffset_West>
+        <labelOffset_East>(0.5,-0.3)</labelOffset_East>
       </li>
     </comps>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <costList>
       <WoodLog>10</WoodLog>
     </costList>
     <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_WallBasic</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Buildings/Signs/Sign_WallBasic/WallSign</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
       <damageData>
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
-    <uiIconOffset>(0, -0.2)</uiIconOffset>
+    <uiIconOffset>(0, -0.3)</uiIconOffset>
+    <uiIconScale>1.4</uiIconScale>
   </ThingDef>
 
-  <ThingDef ParentName="SignWallBase" index="4">
+  <ThingDef ParentName="SignWallBase">
     <defName>SignWallNeonOpen</defName>
     <label>neon open sign</label>
-    <description>A colorful glowing sign used to welcome visitors to a business.</description>
+    <description>A colorful glowing sign used to welcome visitors to a business. Uses a very small amount of power.</description>
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
         <canBeEmpty>true</canBeEmpty>
-        <labelOffset>(0,-1)</labelOffset>
+        <labelOffset_North>(0,-0.3)</labelOffset_North>
+        <labelOffset_South>(0,-0.98)</labelOffset_South>
+        <labelOffset_East>(0.7,-0.4)</labelOffset_East>
+        <labelOffset_West>(-0.7,-0.4)</labelOffset_West>
         <defaultContents></defaultContents>
       </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(255,60,125,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>5</basePowerConsumption>
+      </li>
     </comps>
-    <altitudeLayer>VisEffects</altitudeLayer>
     <costList>
       <Steel>20</Steel>
     </costList>
     <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_WallNeon</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>Transparent</shaderType>
+      <texPath>Things/Buildings/Signs/Sign_NeonOpen/Open</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
       <damageData>
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
-    <uiIconOffset>(0, -0.2)</uiIconOffset>
+    <uiIconOffset>(0, -0.37)</uiIconOffset>
+    <uiIconScale>1.75</uiIconScale>
   </ThingDef>
 
   <!--============================== Neolithic ==============================-->
@@ -230,6 +250,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
+        <labelOffset>(0,1.2)</labelOffset>
       </li>
     </comps>
     <fillPercent>0.15</fillPercent>
@@ -344,6 +365,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
+        <labelOffset>(0,0.85)</labelOffset>
       </li>
     </comps>
     <fillPercent>0.15</fillPercent>
@@ -458,6 +480,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
+        <labelOffset>(0,0.5)</labelOffset>
       </li>
     </comps>
     <fillPercent>0.15</fillPercent>
@@ -567,6 +590,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
+        <labelOffset>(0,0.7)</labelOffset>
       </li>
     </comps>
     <fillPercent>0.15</fillPercent>
@@ -639,11 +663,16 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
-        <labelOffset>(0,0.98)</labelOffset>
+        <labelOffset_South>(0,0.98)</labelOffset_South>
+        <labelOffset_North>(0,0.98)</labelOffset_North>
+        <labelOffset_East>(0,0)</labelOffset_East>
+        <labelOffset_West>(0,0)</labelOffset_West>
         <canBeEmpty>true</canBeEmpty>
         <defaultContents></defaultContents>
       </li>
     </comps>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
     <altitudeLayer>Blueprint</altitudeLayer>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
@@ -665,8 +694,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <WoodLog>160</WoodLog>
     </costList>
     <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_ArchWood</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Buildings/Signs/Sign_ArchWood/ArchWood</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
       <shadowData>
         <volume>(1.95, 1, 0.2)</volume>
         <offset>(0,0,-0.52)</offset>
@@ -674,8 +703,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <damageData>
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
-      <drawSize>(3,3)</drawSize>
-      <drawOffset>(0,0,1)</drawOffset>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,0,0.6)</drawOffset>
     </graphicData>
     <!--<designatorDropdown>Sign_Arches</designatorDropdown>-->
   </ThingDef>
@@ -695,8 +724,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <WoodLog>200</WoodLog>
     </costList>
     <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_ArchWoodRustic</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Buildings/Signs/Sign_ArchWoodRustic/ArchRustic</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
       <shadowData>
         <volume>(1.95, 1, 0.2)</volume>
         <offset>(0,0,-0.52)</offset>
@@ -704,8 +733,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <damageData>
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
-      <drawSize>(3,3)</drawSize>
-      <drawOffset>(0,0,1)</drawOffset>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,0,0.6)</drawOffset>
     </graphicData>
     <!--<designatorDropdown>Sign_Arches</designatorDropdown>-->
   </ThingDef>
