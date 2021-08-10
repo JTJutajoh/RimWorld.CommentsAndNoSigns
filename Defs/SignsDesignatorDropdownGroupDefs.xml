@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <DesignatorDropdownGroupDef index="100">
+    <defName>Sign_Neolithic</defName>
+    <label>neolithic</label>
+  </DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef index="101">
+    <defName>Sign_Industrial</defName>
+    <label>industrial</label>
+  </DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef index="102">
+    <defName>Sign_Spacer</defName>
+    <label>spacer</label>
+  </DesignatorDropdownGroupDef>
+  
+  <DesignatorDropdownGroupDef index="200">
+    <defName>Sign_Arches</defName>
+    <label>arches</label>
+  </DesignatorDropdownGroupDef>
+  
+</Defs>

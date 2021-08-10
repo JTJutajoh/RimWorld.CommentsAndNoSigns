@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  
+  <!--============================== Bases ==============================-->
+  <ThingDef Name="SignWithCustomLabelBase" ParentName="BuildingBase" Abstract="True">
+    <designationCategory>Signs</designationCategory>
+    <!--<thingClass>Dark.Signs.Building_Sign</thingClass>-->
+    <!-- the key to everything -->
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+  </ThingDef>
+
+  <ThingDef Name="SignBuildingBase" ParentName="SignWithCustomLabelBase" Abstract="True">
+    <building>
+      <isInert>true</isInert>
+      <!--Disabled. This allows it to be built on top of things INCLUDING ITSELF
+      <isEdifice>false</isEdifice>-->
+      <ai_chillDestination>false</ai_chillDestination>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+    </building>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+  </ThingDef>
+  
+  
+  <!-- TODO Add an artable sign subclass for memorials -->
+  <!--============================== Special ==============================-->
+  <!--============================== Comment ==============================-->
+  <ThingDef ParentName="SignWithCustomLabelBase" index="0">
+    <defName>Comment</defName>
+    <label>comment</label>
+    <description>Leave comments to plan ahead or mark things to be remembered.
+Free to place and builds instantly. Use this for making simple comments to yourself.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <editOnPlacement>true</editOnPlacement>
+        <defaultContents>Empty Comment</defaultContents>
+      </li>
+    </comps>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <clearBuildingArea>false</clearBuildingArea>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+    </statBases>
+    <useHitPoints>false</useHitPoints>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <rotatable>false</rotatable>
+    <building>
+      <isInert>true</isInert>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+      <expandHomeArea>false</expandHomeArea>
+      <isEdifice>false</isEdifice>
+      <ai_chillDestination>false</ai_chillDestination>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+    </building>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Comment</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+  </ThingDef>
+  
+  <!--============================== Room sign ==============================-->
+  <ThingDef ParentName="SignBuildingBase" index="1">
+    <defName>RoomSign</defName>
+    <label>room sign</label>
+    <description>A sign that automatically takes the name of the room it is placed in as its label and updates if the role of the room changes.</description>
+    <!--<thingClass>Dark.Signs.Building_Sign_RoomSign</thingClass>-->
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <isRoomSign>true</isRoomSign>
+        <canEditContent>false</canEditContent>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>10</costStuffCount>
+    <rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Things/Building/Furniture/PenMarker</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+  </ThingDef>
+
+  <!--============================== Simple signs ==============================-->
+  <ThingDef ParentName="SignBuildingBase" index="2">
+    <defName>SimpleSign</defName>
+    <label>simple sign</label>
+    <description>A simple sign that can have anything written on it to help remember things or mark things for the future.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>10</costStuffCount>
+    <rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Things/Building/Furniture/PenMarker</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+  </ThingDef>
+
+  <!--============================== Wall signs ==============================-->
+  <ThingDef ParentName="SignBuildingBase" Name="SignWallBase" Abstract="True">
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <clearBuildingArea>false</clearBuildingArea>
+    <fillPercent>0</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="SignWallBase" index="3">
+    <defName>SignWallBasic</defName>
+    <label>wall sign</label>
+    <description>A simple sign that can be hung on walls or doors.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset>(0,-0.8)</labelOffset>
+      </li>
+    </comps>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <costList>
+      <WoodLog>10</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_WallBasic</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconOffset>(0, -0.2)</uiIconOffset>
+  </ThingDef>
+
+  <ThingDef ParentName="SignWallBase" index="4">
+    <defName>SignWallNeonOpen</defName>
+    <label>neon open sign</label>
+    <description>A colorful glowing sign used to welcome visitors to a business.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <canBeEmpty>true</canBeEmpty>
+        <labelOffset>(0,-1)</labelOffset>
+        <defaultContents></defaultContents>
+      </li>
+    </comps>
+    <altitudeLayer>VisEffects</altitudeLayer>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_WallNeon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconOffset>(0, -0.2)</uiIconOffset>
+  </ThingDef>
+
+  <!--============================== Neolithic ==============================-->
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignWoodenMulti</defName>
+    <label>wooden signs</label>
+    <description>A rustic post with multiple signs on it.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>20</WoodLog>
+    </costList>
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_woodenmultiple</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,2)</drawSize>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawOffset>(0,0,0.65)</drawOffset>
+    </graphicData>
+    <uiIconScale>1.4</uiIconScale>
+    <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignHome</defName>
+    <label>house sign</label>
+    <description>A simple sign usually used to mark homes</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>10</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_House</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignPanelWood</defName>
+    <label>Wooden Panel Sign</label>
+    <description>A large wood sign consisting of a panel with room for plenty of text to write down whatever you feel like.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>40</WoodLog>
+    </costList>
+    <size>(2,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_PanelWood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(1.6, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.38)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(2,2)</drawSize>
+      <drawOffset>(0,0,0.5)</drawOffset>
+    </graphicData>
+    <uiIconOffset>(0,-0.1)</uiIconOffset>
+    <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
+  </ThingDef>
+
+  <!--============================== Stuffable/Stone ==============================-->
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignObelisk</defName>
+    <label>Obelisk Sign</label>
+    <description>A stone obelisk with a carving on it for marking things.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>80</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_obelisk</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.5, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(1,2)</drawSize>
+      <drawOffset>(0,0,0.65)</drawOffset>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignSlab</defName>
+    <label>Slab Sign</label>
+    <description>A large stone slab for carving in labels and other markings.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.25</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>200</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>160</costStuffCount>
+    <size>(2,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_PanelStone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(1.6, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(2,2)</drawSize>
+      <drawOffset>(0,0,0.5)</drawOffset>
+    </graphicData>
+  </ThingDef>
+
+  <!--============================== Industrial ==============================-->
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignIndustrial</defName>
+    <label>industrial sign</label>
+    <description>A shiny metal sign. Looks better than the plain kind of sign.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_industrial</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignPanel</defName>
+    <label>Panel Sign</label>
+    <description>A large sign consisting of a panel with room for plenty of text to write down whatever you feel like. Looks nice.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <costList>
+      <Steel>40</Steel>
+    </costList>
+    <size>(2,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_Panel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(1.6, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(2,2)</drawSize>
+      <drawOffset>(0,0,0.5)</drawOffset>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignHazard</defName>
+    <label>hazard sign</label>
+    <description>A shiny metal sign with bright colors to warn away from hazards.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <canBeEmpty>true</canBeEmpty>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_hazard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignHighway</defName>
+    <label>highway sign</label>
+    <description>An ancient design usually used for highways.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_Highway</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.5, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignNature</defName>
+    <label>nature sign</label>
+    <description>A sign usually used to convey information about wildlife or plant life in the area.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>20</WoodLog>
+      <Steel>10</Steel>
+    </costList>
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_Nature</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,2)</drawSize>
+      <shadowData>
+        <volume>(0.7, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawOffset>(0,0,0.65)</drawOffset>
+    </graphicData>
+    <uiIconOffset>(0,-0.14)</uiIconOffset>
+    <uiIconScale>1.2</uiIconScale>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
+  <!--============================== Spacer ==============================-->
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignHologram</defName>
+    <label>holographic sign</label>
+    <description>A spacer-tech hologram for marking and labeling things.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+      </li>
+    </comps>
+    <fillPercent>0.05</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>40</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_Hologram</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Spacer</designatorDropdown>-->
+  </ThingDef>
+
+  <!--============================== Arches ==============================-->
+  <ThingDef ParentName="SignBuildingBase" Name="SignArchBase" Abstract="True">
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset>(0,0.98)</labelOffset>
+        <canBeEmpty>true</canBeEmpty>
+        <defaultContents></defaultContents>
+      </li>
+    </comps>
+    <altitudeLayer>Blueprint</altitudeLayer>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <size>(3,1)</size>
+  </ThingDef>
+
+  <ThingDef ParentName="SignArchBase">
+    <defName>SignArchWood</defName>
+    <label>Wooden Arch Sign</label>
+    <description>A large wood arch with a sign consisting of a panel with room for plenty of text to write down whatever you feel like.</description>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>200</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>160</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_ArchWood</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(1.95, 1, 0.2)</volume>
+        <offset>(0,0,-0.52)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,1)</drawOffset>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Arches</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignArchBase">
+    <defName>SignArchWoodRustic</defName>
+    <label>Rustic Arch Sign</label>
+    <description>A large wood arch with a sign consisting of a panel with room for plenty of text to write down whatever you feel like. Has a very rustic flair to it. Great for the entrance to a town.</description>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>200</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>200</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_ArchWoodRustic</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(1.95, 1, 0.2)</volume>
+        <offset>(0,0,-0.52)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,1)</drawOffset>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Arches</designatorDropdown>-->
+  </ThingDef>
+
+  <!-- Disabled. It's kind of ugly
+  <ThingDef ParentName="SignArchBase">
+    <defName>SignArchTorii</defName>
+    <label>Torii Sign</label>
+    <description>An ancient design of arch with room for a sign.</description>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>400</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>160</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_ArchTorii</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(1.6, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.38)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(3,3)</drawSize>
+      <drawOffset>(0,0,1.3)</drawOffset>
+    </graphicData>
+    <designatorDropdown>Sign_Arches</designatorDropdown>
+  </ThingDef>-->
+</Defs>

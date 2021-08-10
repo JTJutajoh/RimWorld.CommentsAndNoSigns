@@ -1,0 +1,6 @@
+Textures/
+.vs/
+Source/.vs/
+Assemblies/
+
+*.png
