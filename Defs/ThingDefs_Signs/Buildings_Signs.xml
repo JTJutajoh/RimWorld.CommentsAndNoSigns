@@ -240,6 +240,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </graphicData>
     <uiIconOffset>(0, -0.37)</uiIconOffset>
     <uiIconScale>1.75</uiIconScale>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
   </ThingDef>
 
   <!--============================== Neolithic ==============================-->
@@ -470,6 +473,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
@@ -509,6 +515,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <drawSize>(2,2)</drawSize>
       <drawOffset>(0,0,0.5)</drawOffset>
     </graphicData>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
@@ -545,6 +554,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
@@ -580,6 +592,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
@@ -622,6 +637,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </graphicData>
     <uiIconOffset>(0,-0.14)</uiIconOffset>
     <uiIconScale>1.2</uiIconScale>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
@@ -655,6 +673,9 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
+    <researchPrerequisites>
+      <li>Fabrication</li>
+    </researchPrerequisites>
     <!--<designatorDropdown>Sign_Spacer</designatorDropdown>-->
   </ThingDef>
 
