@@ -413,6 +413,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </comps>
     <fillPercent>0.25</fillPercent>
     <pathCost>0</pathCost>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
       <Mass>8</Mass>
@@ -426,8 +428,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <costStuffCount>160</costStuffCount>
     <size>(2,1)</size>
     <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_PanelStone</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Buildings/Signs/Sign_PanelStone/PanelStone</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
       <shadowData>
         <volume>(1.6, 0.5, 0.2)</volume>
         <offset>(0,0,-0.23)</offset>
@@ -436,7 +438,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
       <drawSize>(2,2)</drawSize>
-      <drawOffset>(0,0,0.5)</drawOffset>
+      <drawOffset>(0,0,0)</drawOffset>
     </graphicData>
   </ThingDef>
 
@@ -487,8 +489,12 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
         <labelOffset>(0,0.5)</labelOffset>
+        <labelOffset_East>(0,-0.35)</labelOffset_East>
+        <labelOffset_West>(0,-0.35)</labelOffset_West>
       </li>
     </comps>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -503,8 +509,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </costList>
     <size>(2,1)</size>
     <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_Panel</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Buildings/Signs/Sign_Panel/Panel</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
       <shadowData>
         <volume>(1.6, 0.5, 0.2)</volume>
         <offset>(0,0,-0.23)</offset>
@@ -512,7 +518,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <damageData>
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
-      <drawSize>(2,2)</drawSize>
+      <drawSize>(3,3)</drawSize>
       <drawOffset>(0,0,0.5)</drawOffset>
     </graphicData>
     <researchPrerequisites>
