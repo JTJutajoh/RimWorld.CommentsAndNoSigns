@@ -11,7 +11,7 @@ namespace Dark.Signs
     class Settings : Verse.ModSettings
     {
         static public bool hideLabelsWhenZoomedOut = false;
-        static public bool alwaysShowLabels = false;
+        static public bool alwaysShowLabels = true;
         static public bool addCommentToggle = true;
         static public int minZoomLevel = (int)CameraZoomRange.Middle;
         static public int maxZoomLevel = (int)CameraZoomRange.Middle;
@@ -102,7 +102,7 @@ namespace Dark.Signs
         public override void ExposeData()
         {
             Scribe_Values.Look(ref hideLabelsWhenZoomedOut, "hideLabelsWhenZoomedOut", false);
-            Scribe_Values.Look(ref alwaysShowLabels, "alwaysShowLabels", false);
+            Scribe_Values.Look(ref alwaysShowLabels, "alwaysShowLabels", true);
             Scribe_Values.Look(ref addCommentToggle, "addCommentToggle", true);
             Scribe_Values.Look(ref minZoomLevel, "minZoomLevel", (int)CameraZoomRange.Middle);
             Scribe_Values.Look(ref maxZoomLevel, "maxZoomLevel", (int)CameraZoomRange.Middle);
