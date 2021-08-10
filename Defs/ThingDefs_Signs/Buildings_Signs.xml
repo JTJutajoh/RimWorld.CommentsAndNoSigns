@@ -4,7 +4,7 @@
   
   <!--============================== Bases ==============================-->
   <ThingDef Name="SignWithCustomLabelBase" ParentName="BuildingBase" Abstract="True">
-    <designationCategory>Signs</designationCategory>
+    <designationCategory>Dark_Signs</designationCategory>
     <!--<thingClass>Dark.Signs.Building_Sign</thingClass>-->
     <!-- the key to everything -->
     <drawGUIOverlay>true</drawGUIOverlay>
