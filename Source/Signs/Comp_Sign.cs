@@ -359,7 +359,7 @@ namespace Dark.Signs
             yield return new Command_Toggle
             {
                 defaultLabel = "Show Label",
-                defaultDesc = "When active, show the label all the time. When inactive, the label will only be shown if this sign is selected. Use if you have many signs that you don't need to see all the time.",
+                defaultDesc = "If disabled, the sign's label will only show if the sign is selected.",
                 hotKey = KeyBindingDefOf.Misc3,
                 icon = TexCommand.ForbidOff,
                 isActive = (() => !this.hideLabelOverride),
