@@ -19,6 +19,8 @@
       <ai_chillDestination>false</ai_chillDestination>
       <ai_neverTrashThis>true</ai_neverTrashThis>
     </building>
+    <passability>PassThroughOnly</passability>
+    <altitudeLayer>Blueprint</altitudeLayer>
     <minifiedDef>MinifiedThing</minifiedDef>
     <rotatable>false</rotatable>
     <thingCategories>
@@ -84,7 +86,6 @@ Free to place and builds instantly. Use this for making simple comments to yours
       </li>
     </comps>
     <tickerType>Rare</tickerType>
-    <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
@@ -120,7 +121,6 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <defName>SimpleSign</defName>
     <label>simple sign</label>
     <description>A simple sign that can have anything written on it to help remember things or mark things for the future.</description>
-    <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
@@ -341,6 +341,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <labelOffset>(0,1.2)</labelOffset>
       </li>
     </comps>
+    <passability>Impassable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -405,6 +406,46 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </graphicData>
     <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
   </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignArrow_Wood</defName>
+    <label>arrow sign</label>
+    <description>A simple sign that points at something</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <canBeEmpty>true</canBeEmpty>
+        <defaultContents></defaultContents>
+        <labelOffset>(0,-0.55)</labelOffset>
+      </li>
+    </comps>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>East</defaultPlacingRot>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <costList>
+      <WoodLog>10</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_ArrowWood/Sign_Arrow</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(0.2, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
+  </ThingDef>
   
   <ThingDef ParentName="SignBuildingBase">
     <defName>SignHanging</defName>
@@ -416,6 +457,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <labelOffset>(0,-0.5)</labelOffset>
       </li>
     </comps>
+    <passability>Standable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <rotatable>true</rotatable>
@@ -457,6 +499,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <canEditContent>true</canEditContent>
       </li>
     </comps>
+    <passability>Impassable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -498,8 +541,10 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
         <labelOffset>(0,0.85)</labelOffset>
+        <canBeEmpty>true</canBeEmpty>
       </li>
     </comps>
+    <passability>Impassable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -540,6 +585,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <canEditContent>true</canEditContent>
       </li>
     </comps>
+    <passability>Impassable</passability>
     <fillPercent>0.25</fillPercent>
     <pathCost>0</pathCost>
     <rotatable>true</rotatable>
@@ -612,6 +658,50 @@ Free to place and builds instantly. Use this for making simple comments to yours
   </ThingDef>
 
   <ThingDef ParentName="SignBuildingBase">
+    <defName>SignHangingIndustrial</defName>
+    <label>hanging sign</label>
+    <description>A simple metal sign to hang from a wall</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset>(0,0)</labelOffset>
+        <labelOffset_North>(0,-0.8)</labelOffset_North>
+      </li>
+    </comps>
+    <passability>Standable</passability>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>West</defaultPlacingRot>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_HangingIndustrial/hanging</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(1.5,1.5)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
+    </graphicData>
+    <uiIconOffset>(-0.27, 0.11)</uiIconOffset>
+    <uiIconScale>1.15</uiIconScale>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
     <defName>SignPanel</defName>
     <label>Panel Sign</label>
     <description>A large sign consisting of a panel with room for plenty of text to write down whatever you feel like. Looks nice.</description>
@@ -625,6 +715,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </comps>
     <rotatable>true</rotatable>
     <defaultPlacingRot>South</defaultPlacingRot>
+    <passability>Impassable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -744,6 +835,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <labelOffset>(0,0.7)</labelOffset>
       </li>
     </comps>
+    <passability>Impassable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -789,8 +881,10 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <labelOffset>(0,1.1)</labelOffset>
         <defaultContents>Empty
 Billboard</defaultContents>
+        <canBeEmpty>true</canBeEmpty>
       </li>
     </comps>
+    <passability>Impassable</passability>
     <defaultPlacingRot>South</defaultPlacingRot>
     <rotatable>true</rotatable>
     <fillPercent>0.45</fillPercent>
@@ -827,48 +921,6 @@ Billboard</defaultContents>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
-  <ThingDef ParentName="SignBuildingBase">
-    <defName>SignHangingIndustrial</defName>
-    <label>hanging sign</label>
-    <description>A simple sign to hang from a wall</description>
-    <comps>
-      <li Class="Dark.Signs.CompProperties_Sign">
-        <canEditContent>true</canEditContent>
-        <labelOffset>(0,-0.5)</labelOffset>
-      </li>
-    </comps>
-    <fillPercent>0.15</fillPercent>
-    <pathCost>0</pathCost>
-    <rotatable>true</rotatable>
-    <defaultPlacingRot>West</defaultPlacingRot>
-    <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
-      <Mass>8</Mass>
-      <WorkToBuild>20</WorkToBuild>
-      <Flammability>1.0</Flammability>
-      <Beauty>1</Beauty>
-    </statBases>
-    <costList>
-      <WoodLog>10</WoodLog>
-    </costList>
-    <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_Hanging/hanging</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <shadowData>
-        <volume>(0.2, 0.5, 0.2)</volume>
-        <offset>(0,0,-0.43)</offset>
-      </shadowData>
-      <damageData>
-        <rect>(0.25,0.6,0.5,0.2)</rect>
-      </damageData>
-      <drawSize>(1.5,1.5)</drawSize>
-      <drawOffset>(0,0,0)</drawOffset>
-    </graphicData>
-    <uiIconOffset>(-0.33, 0.15)</uiIconOffset>
-    <uiIconScale>1.15</uiIconScale>
-    <!--<designatorDropdown>Sign_Neolithic</designatorDropdown>-->
-  </ThingDef>
-
   <!--============================== Spacer ==============================-->
   <ThingDef ParentName="SignBuildingBase">
     <defName>SignHologram</defName>
@@ -879,6 +931,7 @@ Billboard</defaultContents>
         <canEditContent>true</canEditContent>
       </li>
     </comps>
+    <passability>PassThroughOnly</passability>
     <fillPercent>0.05</fillPercent>
     <pathCost>0</pathCost>
     <statBases>
@@ -921,6 +974,7 @@ Billboard</defaultContents>
     <rotatable>true</rotatable>
     <defaultPlacingRot>South</defaultPlacingRot>
     <altitudeLayer>Blueprint</altitudeLayer>
+    <passability>Standable</passability>
     <fillPercent>0.15</fillPercent>
     <pathCost>0</pathCost>
     <size>(3,1)</size>
