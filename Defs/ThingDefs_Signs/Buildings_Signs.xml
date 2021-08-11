@@ -512,7 +512,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <rotatable>true</rotatable>
     <defaultPlacingRot>South</defaultPlacingRot>
     <costList>
-      <WoodLog>40</WoodLog>
+      <WoodLog>70</WoodLog>
     </costList>
     <size>(2,1)</size>
     <graphicData>
@@ -559,7 +559,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <li>Woody</li>
       <li>Stony</li>
     </stuffCategories>
-    <costStuffCount>40</costStuffCount>
+    <costStuffCount>85</costStuffCount>
     <size>(1,1)</size>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_obelisk</texPath>
@@ -600,7 +600,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <stuffCategories>
       <li>Stony</li>
     </stuffCategories>
-    <costStuffCount>160</costStuffCount>
+    <costStuffCount>70</costStuffCount>
     <size>(2,1)</size>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_PanelStone/PanelStone</texPath>
@@ -683,7 +683,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <stuffCategories>
       <li>Metallic</li>
     </stuffCategories>
-    <costStuffCount>40</costStuffCount>
+    <costStuffCount>5</costStuffCount>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_HangingIndustrial/hanging</texPath>
       <graphicClass>Graphic_Multi</graphicClass>
@@ -942,7 +942,7 @@ Billboard</defaultContents>
       <Beauty>3</Beauty>
     </statBases>
     <costList>
-      <Steel>20</Steel>
+      <Steel>60</Steel>
     </costList>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_Hologram</texPath>
@@ -992,7 +992,7 @@ Billboard</defaultContents>
       <Beauty>1</Beauty>
     </statBases>
     <costList>
-      <WoodLog>160</WoodLog>
+      <WoodLog>100</WoodLog>
     </costList>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_ArchWood/ArchWood</texPath>
@@ -1022,7 +1022,7 @@ Billboard</defaultContents>
       <Beauty>2</Beauty>
     </statBases>
     <costList>
-      <WoodLog>200</WoodLog>
+      <WoodLog>130</WoodLog>
     </costList>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_ArchWoodRustic/ArchRustic</texPath>
