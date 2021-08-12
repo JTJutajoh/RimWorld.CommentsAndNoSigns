@@ -30,7 +30,7 @@ namespace Dark.Signs
         public Dialog_RenameSign(Comp_Sign signComp)
         {
             this.signComp = signComp;
-            this.curName = signComp.signContent;
+            this.curName = signComp?.signContent ?? "";
         }
 
         protected override AcceptanceReport NameIsValid(string name)

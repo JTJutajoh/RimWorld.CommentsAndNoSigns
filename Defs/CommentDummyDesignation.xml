@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <DesignationDef>
+    <defName>CommentDummy</defName>
+    <texturePath>Things/Buildings/Signs/Comment</texturePath>
+    <targetType>Cell</targetType>
+    <removeIfBuildingDespawned>true</removeIfBuildingDespawned>
+    <designateCancelable>false</designateCancelable>
+  </DesignationDef>
+
+</Defs>

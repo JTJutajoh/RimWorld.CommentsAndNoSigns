@@ -69,17 +69,23 @@
     <Compile Include="Comp_Sign.cs" />
     <Compile Include="Dialog_RenameSign.cs" />
     <Compile Include="Mod.cs" />
+    <Compile Include="Patches\GenConstruct_CanPlaceBlueprintAt_Patch.cs" />
     <Compile Include="Patches\Room_Notify_ContainedThingSpawnedOrDespawned_Patch.cs" />
     <Compile Include="Patches\Room_Notify_RoomShapeChanged_Patch.cs" />
     <Compile Include="Patches\Room_Notify_BedTypeChanged_Patch.cs" />
+    <Compile Include="Patches\ThingOverlays_ThingOverlaysOnGUI_Patch.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowCommentToggle.cs" />
     <Compile Include="SignUtils.cs" />
+    <Compile Include="Patches\ThingSelectionUtility_SelectableByMapClick_Patch.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\About\About.xml">
       <Link>About.xml</Link>
+    </Content>
+    <Content Include="..\..\Defs\CommentDummyDesignation.xml">
+      <Link>CommentDummyDesignation.xml</Link>
     </Content>
     <Content Include="..\..\Defs\SignsDesignatorCategory.xml">
       <Link>SignsDesignatorCategory.xml</Link>

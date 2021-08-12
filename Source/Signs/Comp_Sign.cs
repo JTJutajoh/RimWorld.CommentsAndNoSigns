@@ -82,6 +82,15 @@ namespace Dark.Signs
                 {
                     Find.WindowStack.Add(new Dialog_RenameSign(this));
                 }
+
+                if (this.parent.def.defName == "Comment" && this.parent.Fogged())
+                {
+                    //Messages.Message("Spawning dummy designation", MessageTypeDefOf.CautionInput, false);
+                    DesignationManager designationManager = this.parent.Map.designationManager;
+                    LocalTargetInfo target = new LocalTargetInfo(this.parent);
+                    Designation dummy = new Designation(target, DefDatabase<DesignationDef>.GetNamed("CommentDummy"));
+                    designationManager.AddDesignation(dummy);
+                }
             }
         }
 
@@ -329,6 +338,7 @@ namespace Dark.Signs
             float x = size.x;
             float y = size.y;
             GUI.DrawTexture(new Rect(screenPos.x - x / 2f - 4f, screenPos.y, x + 8f, y), TexUI.GrayTextBG);
+            //GUI.DrawTexture(new Rect(screenPos.x - x / 2f - 4f, screenPos.y, x + 8f, y), TexUI.TextBGBlack);
             GUI.color = color;
             Text.Anchor = TextAnchor.UpperCenter;
             //Widgets.Label(new Rect(screenPos.x - x / 2f, screenPos.y - 3f, x, 999f), s);
@@ -453,6 +463,18 @@ namespace Dark.Signs
             //stringBuilder.Append(trimmedContent);
 
             return stringBuilder.ToString();
+        }
+
+        public static bool ShouldDrawThingOverFog(ThingDef def)
+        {
+            if (def.defName == "Comment")
+            {
+                return true;
+            }
+            else;
+            {
+                return false;
+            }
         }
 
         public override void PostExposeData()
