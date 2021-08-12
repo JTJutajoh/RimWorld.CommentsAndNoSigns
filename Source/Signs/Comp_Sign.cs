@@ -52,7 +52,7 @@ namespace Dark.Signs
         {
             get
             {
-                return _labelColor;
+                return this._labelColor;
             }
             set
             {
@@ -92,6 +92,17 @@ namespace Dark.Signs
                     designationManager.AddDesignation(dummy);
                 }
             }
+            else
+            {
+                RemoveExtraLineEndings();
+            }
+        }
+
+        private void RemoveExtraLineEndings()
+        {
+            string orig = signContent.Trim();
+
+            signContent = orig.Replace("\r", "");
         }
 
         public void SetContentsFromRoom()
@@ -232,7 +243,8 @@ namespace Dark.Signs
         }
 
         // Returns a different size depending on the font being used
-        private float GetLineHeight()
+        // used for the background texture to make it fit better
+        private float GetLineHeightBGFraction()
         {
             switch (this.fontSize)
             {
@@ -246,13 +258,13 @@ namespace Dark.Signs
                     return 0.6f;
             }
         }
-        private Vector2 GetLabelBGSizeFor(string s)
+        private Vector2 GetLabelSizeFor(string s)
         {
             Vector2 size = new Vector2();
             //size = Text.CalcSize(s);
             GUIContent content = new GUIContent(s);
             size = Text.CurFontStyle.CalcSize(content);
-            size.y *= GetLineHeight();
+            //size.y *= GetLineHeight();
             return size;
         }
 
@@ -317,7 +329,7 @@ namespace Dark.Signs
             foreach (string line in DoSignContents())
             {
                 DrawSignLabel(drawpos, line, labelcolor);
-                drawpos.y += Text.LineHeight * GetLineHeight() * 1.1f;
+                drawpos.y += Text.LineHeight * GetLineHeightBGFraction() * 1.1f;
             }
         }
         // Draws one line
@@ -334,14 +346,24 @@ namespace Dark.Signs
             // Content (mostly) copied from GenMapUI.DrawThingLabel()
             //Text.Font = GameFont.Medium;
             Text.Font = fontSize;
-            Vector2 size = GetLabelBGSizeFor(s); //Text.CalcSize(s);
+            Vector2 size = GetLabelSizeFor(s); //Text.CalcSize(s);
             float x = size.x;
             float y = size.y;
-            GUI.DrawTexture(new Rect(screenPos.x - x / 2f - 4f, screenPos.y, x + 8f, y), TexUI.GrayTextBG);
+
+            Rect labelRect = new Rect(screenPos.x - size.x / 2f, screenPos.y - 3f, x, size.y);
+
+            
+            if (!labelRect.Overlaps(new Rect(0f, 0f, UI.screenWidth, UI.screenHeight)))
+            {
+                return; // cull offscreen labels
+            }
+
+            // Actually do the drawing
+            GUI.DrawTexture(new Rect(screenPos.x - size.x / 2f - 4f, screenPos.y, size.x + 8f, size.y * GetLineHeightBGFraction()), TexUI.GrayTextBG);
             //GUI.DrawTexture(new Rect(screenPos.x - x / 2f - 4f, screenPos.y, x + 8f, y), TexUI.TextBGBlack);
             GUI.color = color;
             Text.Anchor = TextAnchor.UpperCenter;
-            Widgets.Label(new Rect(screenPos.x - x / 2f, screenPos.y - 3f, x, 999f), s);
+            Widgets.Label(labelRect, s);
             GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
             Text.Font = GameFont.Small;
@@ -482,6 +504,7 @@ namespace Dark.Signs
             base.PostExposeData();
             Scribe_Values.Look(ref _signContent, "content");
             Scribe_Values.Look(ref _fontSize, "fontSize");
+            Scribe_Values.Look(ref _labelColor, "labelColor");
             Scribe_Values.Look(ref hideLabelOverride, "hideLabelOverride");
         }
     }

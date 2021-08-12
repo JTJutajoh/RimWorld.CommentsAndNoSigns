@@ -5,6 +5,8 @@
   <Signs_SetSign>Sign content saved</Signs_SetSign>
   <Signs_EditHeader>Enter the text for this sign</Signs_EditHeader>
   <Signs_LengthWarning>Beware that many lines of text could impact performance.</Signs_LengthWarning>
+  <Signs_LengthLeft>Characters remaining:</Signs_LengthLeft>
+  <Signs_TooLong>Sign content is too long. Character limit can be adjusted or turned off in mod settings.</Signs_TooLong>
   <Signs_ClearButton>CLEAR</Signs_ClearButton>
   <Signs_ColorButton>Change Color</Signs_ColorButton>
   <Signs_BlankMessage>Cannot be blank</Signs_BlankMessage>
@@ -35,4 +37,7 @@
   <Signs_SettingsMinZoom>Minimum Zoom level</Signs_SettingsMinZoom>
   <Signs_SettingsAddToggle>Add label toggle button</Signs_SettingsAddToggle>
   <Signs_SettingsAddToggle_desc>Whether or not the button for quickly toggling all sign labels at once should be added to the UI in the bottom right. Turn this off if you want them to always be visible/invisible and your UI is cluttered.</Signs_SettingsAddToggle_desc>
+  <Signs_SettingsUseCharLimit>Use character limit</Signs_SettingsUseCharLimit>
+  <Signs_SettingsUseCharLimitWarning>ONLY DISABLE CHARACTER LIMIT IF YOU KNOW WHAT YOU'RE DOING. Very long labels will cause your game to lag and your save files to get huge.</Signs_SettingsUseCharLimitWarning>
+  <Signs_SettingsUseCharLimit_desc>BE CAREFUL DISABLING THIS. While things should still work, you can cause severe lag with huge sign contents and inflate your save file. Generally it's a good idea to leave this on.</Signs_SettingsUseCharLimit_desc>
 </LanguageData>

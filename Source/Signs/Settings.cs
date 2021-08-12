@@ -5,18 +5,22 @@ using System.Text;
 using Verse;
 using RimWorld;
 using UnityEngine;
+using ColourPicker;
 
 namespace Dark.Signs
 {
     class Settings : Verse.ModSettings
     {
+        static public bool useCharacterLimit = true;
+        static public int characterLimit = 512;
+        static private string charLimEditBuffer = characterLimit.ToString();
         static public bool hideLabelsWhenZoomedOut = false;
         static public bool alwaysShowLabels = true;
         static public bool addCommentToggle = true;
         static public int minZoomLevel = (int)CameraZoomRange.Middle;
         static public int maxZoomLevel = (int)CameraZoomRange.Middle;
         static public float worldVerticalOffset = 0.5f;
-        static public Color globalLabelColor = GenMapUI.DefaultThingLabelColor.ToTransparent(1f);
+        static public Color globalLabelColor = GenMapUI.DefaultThingLabelColor.ToOpaque();
 
 
         public static Settings Get()
@@ -36,7 +40,7 @@ namespace Dark.Signs
             listingStandard.GapLine();
 
             // Offset
-            listingStandard.Label("Signs_SettingsYOffset".Translate() + " " + worldVerticalOffset.ToString("N2"));
+            listingStandard.Label("Signs_SettingsYOffset".Translate() + " " + (worldVerticalOffset-0.5f).ToString("N2"));
             worldVerticalOffset = listingStandard.Slider(worldVerticalOffset, -1f, 1f);
 
             listingStandard.GapLine();
@@ -44,16 +48,33 @@ namespace Dark.Signs
             // Color
             StringBuilder col = new StringBuilder();
             col.Append("(");
-            col.Append(globalLabelColor.r.ToString("N1"));
+            col.Append((int)(globalLabelColor.r * 100));
             col.Append(",");
-            col.Append(globalLabelColor.g.ToString("N1"));
+            col.Append((int)(globalLabelColor.g * 100));
             col.Append(",");
-            col.Append(globalLabelColor.b.ToString("N1"));
+            col.Append((int)(globalLabelColor.b * 100));
+            col.Append(",");
+            col.Append((int)(globalLabelColor.a * 100));
             col.Append(")");
-            listingStandard.Label("Signs_SettingsColor".Translate()+col+":");
+            /*listingStandard.Label("Signs_SettingsColor".Translate()+col+":");
             globalLabelColor.r = listingStandard.Slider(globalLabelColor.r, 0f, 1f);
             globalLabelColor.g = listingStandard.Slider(globalLabelColor.g, 0f, 1f);
-            globalLabelColor.b = listingStandard.Slider(globalLabelColor.b, 0f, 1f);
+            globalLabelColor.b = listingStandard.Slider(globalLabelColor.b, 0f, 1f);*/
+            Rect colSettingRect = listingStandard.Label("Signs_SettingsColor".Translate() + ": " + col);
+            colSettingRect.x += colSettingRect.width - 32f;
+            colSettingRect.size = new Vector2(32f, 32f);
+            Widgets.DrawBoxSolid(colSettingRect, Settings.globalLabelColor);
+            if (Widgets.ButtonInvisible(colSettingRect, true))
+            {
+                Find.WindowStack.Add(new Dialog_ColourPicker(Settings.globalLabelColor,
+                (newColor) =>
+                {
+                    Settings.globalLabelColor = newColor;
+                }
+                ) );
+            }
+            listingStandard.Gap();
+
 
             listingStandard.GapLine();
 
@@ -90,6 +111,19 @@ namespace Dark.Signs
             listingStandard.CheckboxLabeled("Signs_SettingsAddToggle".Translate(), ref addCommentToggle, "Signs_SettingsAddToggle_desc".Translate());
 
             listingStandard.GapLine();
+
+            listingStandard.CheckboxLabeled("Signs_SettingsUseCharLimit".Translate(), ref useCharacterLimit, "Signs_SettingsUseCharLimit_desc".Translate());
+            if (!useCharacterLimit)
+            {
+                Rect warningRect = listingStandard.Label("Signs_SettingsUseCharLimitWarning".Translate());
+                Widgets.DrawBoxSolid(warningRect, Color.red.ToTransparent(0.5f));
+            }
+            else
+            {
+                listingStandard.Indent(32);
+                listingStandard.IntEntry(ref characterLimit, ref charLimEditBuffer);
+                listingStandard.Outdent(32);
+            }
 
             listingStandard.End();
         }

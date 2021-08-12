@@ -19,7 +19,7 @@ namespace Dark.Signs
         {
             get
             {
-                return 128;
+                return Settings.characterLimit;
             }
         }
 
@@ -34,23 +34,35 @@ namespace Dark.Signs
         {
             this.signComp = signComp;
             this.curName = signComp?.signContent ?? "";
-            this.curColor = signComp?.labelColor ?? Color.white;
+            this.curColor = signComp?.labelColor ?? Color.white.ToOpaque();
         }
 
         protected override AcceptanceReport NameIsValid(string name)
         {
-            //AcceptanceReport result = base.NameIsValid(name); // makes sure it's longer than 0
             AcceptanceReport result = new AcceptanceReport();
+            result = true;
+            //AcceptanceReport result = base.NameIsValid(name); // makes sure it's longer than 0
             if (!this.signComp.Props.canBeEmpty)
             {
-                result = base.NameIsValid(name);
+                result = base.NameIsValid(name); // only checks 0 length
             }
-            else
+            if (Settings.useCharacterLimit)
             {
-                result = true;
+                result = CheckLength(name);
             }
+
             if (!result.Accepted)
             {
+                return result;
+            }
+            return true;
+        }
+
+        private AcceptanceReport CheckLength(string name)
+        {
+            if (name.Length > Settings.characterLimit)
+            {
+                AcceptanceReport result = new AcceptanceReport("Signs_TooLong".Translate());
                 return result;
             }
             return true;
@@ -119,7 +131,16 @@ namespace Dark.Signs
             }
             GUI.SetNextControlName("RenameField");
             Widgets.Label(new Rect(0f, 0f, inRect.width, 30f), "Signs_EditHeader".Translate());// (max " + this.MaxNameLength.ToString() + " chars):");
-            Widgets.Label(new Rect(0f, 34f, inRect.width, 30f), "Signs_LengthWarning".Translate());
+            Widgets.Label(new Rect(0f, 30f, inRect.width, 30f), "Signs_LengthWarning".Translate());
+            if (Settings.useCharacterLimit)
+            {
+                Rect LenghlimitLabel = new Rect(inRect.width - (inRect.width / 2.5f), 144f, inRect.width / 2.5f, 24f);
+                Widgets.Label(LenghlimitLabel, "Signs_LengthLeft".Translate() + " " + (this.MaxNameLength - this.curName.Length));
+                if (this.curName.Length > this.MaxNameLength)
+                {
+                    Widgets.DrawBoxSolid(LenghlimitLabel, Color.red.ToTransparent(0.6f));
+                }
+            }
 
             // Body
             Rect bodyRect = new Rect(inRect.width * 0.13f, 64f, inRect.width*0.9f, 70f);
@@ -137,9 +158,11 @@ namespace Dark.Signs
 
             // Color picker button
             Rect ColorButRect = new Rect(0f, 144f, inRect.width / 3f, 32f);
+            Rect ColorSwatchRect = new Rect(inRect.width / 3f + 8f, 144f, 32f, 32f);
+            Widgets.DrawBoxSolid(ColorSwatchRect, this.curColor);
             Vector2 ColorPickerPos = new Vector2(UI.screenWidth - InitialSize.x, UI.screenHeight - InitialSize.y) / 2f;
-            ColorPickerPos.y += inRect.height * 1.5f;
-            if (Widgets.ButtonText(ColorButRect, "Signs_ColorButton".Translate(), true, true, true))
+            ColorPickerPos.y += inRect.height * 1.15f;
+            if (Widgets.ButtonText(ColorButRect, "Signs_ColorButton".Translate(), true, true, true) || Widgets.ButtonInvisible(ColorSwatchRect, true))
             {
                 Find.WindowStack.Add(new Dialog_ColourPicker(this.curColor,
                 (newColor) =>
@@ -150,7 +173,6 @@ namespace Dark.Signs
                 position: ColorPickerPos
                 ) );
             }
-            Widgets.DrawBoxSolid(new Rect(inRect.width / 3f + 8f, 144f, 32f, 32f), this.curColor);
                 //Widgets.DrawBoxSolid(ColorButRect, this.curColor.ToTransparent(0.3f));
 
             //int charsLeft = this.MaxNameLength - 2 - text.Length;
