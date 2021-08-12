@@ -94,12 +94,20 @@ namespace Dark.Signs
             }
             else
             {
+                if (labelColor == null)
+                {
+                    Log.Error("Null label color loaded");
+                }
                 RemoveExtraLineEndings();
             }
         }
 
         private void RemoveExtraLineEndings()
         {
+            if (signContent == null)
+            {
+                return;
+            }
             string orig = signContent.Trim();
 
             signContent = orig.Replace("\r", "");
@@ -504,7 +512,7 @@ namespace Dark.Signs
             base.PostExposeData();
             Scribe_Values.Look(ref _signContent, "content");
             Scribe_Values.Look(ref _fontSize, "fontSize");
-            Scribe_Values.Look(ref _labelColor, "labelColor");
+            Scribe_Values.Look(ref _labelColor, "labelColor", Settings.globalLabelColor);
             Scribe_Values.Look(ref hideLabelOverride, "hideLabelOverride");
         }
     }
