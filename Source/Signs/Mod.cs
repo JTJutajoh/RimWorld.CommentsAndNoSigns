@@ -28,7 +28,7 @@ namespace Dark.Signs
 
         public override string SettingsCategory()
         {
-            return "Signs";
+            return "Signs_SettingsCategory".Translate();
         }
     }
 }

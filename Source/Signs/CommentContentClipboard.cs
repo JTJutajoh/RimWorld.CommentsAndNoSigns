@@ -47,8 +47,8 @@ namespace Dark.Signs
 			yield return new Command_Action
 			{
 				icon = ContentFinder<Texture2D>.Get("UI/Commands/CopySettings", true),
-				defaultLabel = "Copy Sign",
-				defaultDesc = "Copy this sign's settings so you can paste them onto another sign",
+				defaultLabel = "Signs_CopyGizmo".Translate(),
+				defaultDesc = "Signs_CopyGizmo_desc".Translate(),
 				action = delegate ()
 				{
 					SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
@@ -58,8 +58,8 @@ namespace Dark.Signs
 			};
 			Command_Action command_Action = new Command_Action();
 			command_Action.icon = ContentFinder<Texture2D>.Get("UI/Commands/PasteSettings", true);
-			command_Action.defaultLabel = "Paste Sign";
-			command_Action.defaultDesc = "Overwrite this sign's content and settings with those previously copied to the clipboard";
+			command_Action.defaultLabel = "Signs_PasteGizmo".Translate();
+			command_Action.defaultDesc = "Signs_PasteGizmo_desc".Translate();
 			command_Action.action = delegate ()
 			{
 				SoundDefOf.Tick_High.PlayOneShotOnCamera(null);

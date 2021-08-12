@@ -16,7 +16,7 @@ namespace Dark.Signs
         static public int minZoomLevel = (int)CameraZoomRange.Middle;
         static public int maxZoomLevel = (int)CameraZoomRange.Middle;
         static public float worldVerticalOffset = 0.5f;
-        static public Color globalLabelColor = GenMapUI.DefaultThingLabelColor;
+        static public Color globalLabelColor = GenMapUI.DefaultThingLabelColor.ToTransparent(1f);
 
 
         public static Settings Get()
@@ -32,11 +32,11 @@ namespace Dark.Signs
 
             listingStandard.ColumnWidth = inRect.width / 2.2f;
 
-            listingStandard.Label("Display settings");
+            listingStandard.Label("Signs_SettingsDisplay".Translate());
             listingStandard.GapLine();
 
             // Offset
-            listingStandard.Label("Label vertical offset: " + worldVerticalOffset.ToString("N2"));
+            listingStandard.Label("Signs_SettingsYOffset".Translate() + " " + worldVerticalOffset.ToString("N2"));
             worldVerticalOffset = listingStandard.Slider(worldVerticalOffset, -1f, 1f);
 
             listingStandard.GapLine();
@@ -50,7 +50,7 @@ namespace Dark.Signs
             col.Append(",");
             col.Append(globalLabelColor.b.ToString("N1"));
             col.Append(")");
-            listingStandard.Label("Label color"+col+":");
+            listingStandard.Label("Signs_SettingsColor".Translate()+col+":");
             globalLabelColor.r = listingStandard.Slider(globalLabelColor.r, 0f, 1f);
             globalLabelColor.g = listingStandard.Slider(globalLabelColor.g, 0f, 1f);
             globalLabelColor.b = listingStandard.Slider(globalLabelColor.b, 0f, 1f);
@@ -58,27 +58,27 @@ namespace Dark.Signs
             listingStandard.GapLine();
 
             // Hide settings
-            listingStandard.CheckboxLabeled("Show sign labels at all zooms", ref alwaysShowLabels, "Show sign labels at any zoom level. All sign labels can be toggled off and on at any time using the speech bubble button added to the bottom right of the in-game UI.");
+            listingStandard.CheckboxLabeled("Signs_SettingsAllZooms".Translate(), ref alwaysShowLabels, "Signs_SettingsAllZooms_desc".Translate());
             if (!alwaysShowLabels)
             {
                 listingStandard.Gap();
                 listingStandard.Indent();
-                if (listingStandard.RadioButton("Hide sign labels when zoomed out", active: hideLabelsWhenZoomedOut, tooltip : "Only show sign labels when the camera is zoomed in closer than the below threshold"))
+                if (listingStandard.RadioButton("Signs_SettingsHideOut".Translate(), active: hideLabelsWhenZoomedOut, tooltip : "Signs_SettingsHideOut_desc".Translate()))
                     hideLabelsWhenZoomedOut = true;
                 if (hideLabelsWhenZoomedOut)
                 {
                     // Hide when zoomed OUT
-                    listingStandard.Label("Minimum Zoom level: " + ((CameraZoomRange)minZoomLevel).ToString() + " (" + minZoomLevel.ToString() + ")");
+                    listingStandard.Label("Signs_SettingsMinZoom".Translate() + ": " + ((CameraZoomRange)minZoomLevel).ToString() + " (" + minZoomLevel.ToString() + ")");
                     minZoomLevel = (int)listingStandard.Slider(minZoomLevel, (int)CameraZoomRange.Closest, (int)CameraZoomRange.Furthest);
                 }
 
-                if (listingStandard.RadioButton("Hide sign labels when zoomed in", active: !hideLabelsWhenZoomedOut, tooltip: "Only show sign labels when the camera is zoomed out further than the below threshold"))
+                if (listingStandard.RadioButton("Signs_SettingsHideIn".Translate(), active: !hideLabelsWhenZoomedOut, tooltip: "Signs_SettingsHideIn_desc".Translate()))
                     hideLabelsWhenZoomedOut = false;
                 //listingStandard.CheckboxLabeled("Hide sign labels when zoomed out", ref hideLabelsWhenZoomedOut, "Hides all sign labels when the camera is zoomed out to help reduce visual clutter");
                 if (!hideLabelsWhenZoomedOut)
                 {
                     // Hide when zoomed IN
-                    listingStandard.Label("Maximum Zoom level: " + ((CameraZoomRange)maxZoomLevel).ToString() + " (" + maxZoomLevel.ToString() + ")");
+                    listingStandard.Label("Signs_SettingsMaxZoom".Translate() + ": " + ((CameraZoomRange)maxZoomLevel).ToString() + " (" + maxZoomLevel.ToString() + ")");
                     maxZoomLevel = (int)listingStandard.Slider(maxZoomLevel, (int)CameraZoomRange.Closest, (int)CameraZoomRange.Furthest);
                 }
             }
@@ -87,12 +87,7 @@ namespace Dark.Signs
 
 
             // Toggle button
-            listingStandard.CheckboxLabeled("Add label toggle button", ref addCommentToggle, "Whether or not the button for quickly toggling all sign labels at once should be added to the UI in the bottom right. Turn this off if you want them to always be visible/invisible and your UI is cluttered.");
-
-            listingStandard.Indent();
-            listingStandard.Label("Example toggle button:");
-            listingStandard.ButtonImage(ContentFinder<Texture2D>.Get("UI/CommentUI", true), 20, 20);
-            listingStandard.Outdent();
+            listingStandard.CheckboxLabeled("Signs_SettingsAddToggle".Translate(), ref addCommentToggle, "Signs_SettingsAddToggle_desc".Translate());
 
             listingStandard.GapLine();
 

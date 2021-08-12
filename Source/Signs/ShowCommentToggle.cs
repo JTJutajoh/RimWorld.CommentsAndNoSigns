@@ -25,7 +25,7 @@ namespace Dark.Signs
                 return; // Button disabled in settings
             }
 
-            row.ToggleableIcon(ref drawComments, ContentFinder<Texture2D>.Get("UI/CommentUI", true), "Toggle visibility of sign labels", SoundDefOf.Mouseover_ButtonToggle);
+            row.ToggleableIcon(ref drawComments, ContentFinder<Texture2D>.Get("UI/CommentUI", true), "Signs_ToggleToolTip", SoundDefOf.Mouseover_ButtonToggle);
         }
     }
 }

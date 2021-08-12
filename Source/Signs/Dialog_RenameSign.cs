@@ -4,12 +4,15 @@
 using RimWorld;
 using Verse;
 using UnityEngine;
+using ColourPicker;
 
 namespace Dark.Signs
 {
     //ripped from Dialog_RenameZone and LWM Deep Storage's version of that
     public class Dialog_RenameSign : Dialog_Rename
     {
+        private Color curColor;
+
         //private Building_Sign sign;
         private Comp_Sign signComp;
         protected override int MaxNameLength //unused
@@ -31,6 +34,7 @@ namespace Dark.Signs
         {
             this.signComp = signComp;
             this.curName = signComp?.signContent ?? "";
+            this.curColor = signComp?.labelColor ?? Color.white;
         }
 
         protected override AcceptanceReport NameIsValid(string name)
@@ -74,12 +78,21 @@ namespace Dark.Signs
             if (this.signComp != null)
             {
                 this.signComp.signContent = name.Trim();
+                SetColor(this.curColor);
             }
             else
             {
                 Log.Error("(Signs) Edit dialog has no sign or signComp to edit.");
             }
-            Messages.Message("Sign content set", MessageTypeDefOf.TaskCompletion, false);
+            Messages.Message("Signs_SetSign".Translate(), MessageTypeDefOf.TaskCompletion, false);
+        }
+
+        protected void SetColor(Color color)
+        {
+            if (this.signComp != null)
+            {
+                this.signComp.labelColor = this?.curColor ?? Color.white;
+            }
         }
 
         public override Vector2 InitialSize
@@ -87,7 +100,7 @@ namespace Dark.Signs
             get
             {
                 var o = base.InitialSize;
-                o.x += 165f;
+                o.x += 200f;
                 o.y += 100f;
                 
                 return o;
@@ -105,27 +118,52 @@ namespace Dark.Signs
                 Event.current.Use();
             }
             GUI.SetNextControlName("RenameField");
-            Widgets.Label(new Rect(0f, 4f, inRect.width, 30f), "Enter the text for this sign");// (max " + this.MaxNameLength.ToString() + " chars):");
-            string text = Widgets.TextAreaScrollable(new Rect(0f, 32f, inRect.width, 70f), Comp_Sign.UnescapeContents(this.curName), ref this.scrollbarPos);
-            this.curName = text;
+            Widgets.Label(new Rect(0f, 0f, inRect.width, 30f), "Signs_EditHeader".Translate());// (max " + this.MaxNameLength.ToString() + " chars):");
+            Widgets.Label(new Rect(0f, 34f, inRect.width, 30f), "Signs_LengthWarning".Translate());
 
-            if (Widgets.ButtonText(new Rect(inRect.width/4, 114f, inRect.width/2, 35f), "Clear", true, true, true))
+            // Body
+            Rect bodyRect = new Rect(inRect.width * 0.13f, 64f, inRect.width*0.9f, 70f);
+            string text = Widgets.TextAreaScrollable(bodyRect, Comp_Sign.UnescapeContents(this.curName), ref this.scrollbarPos);
+            this.curName = text;
+                
+
+            // Clear button
+            Rect ClearButRect = new Rect(0, 65f, (inRect.width * 0.12f), 64f);
+            if (Widgets.ButtonText(ClearButRect, "Signs_ClearButton".Translate(), true, true, Color.red, true))
             {
                 this.curName = "";
             }
+            Widgets.DrawBoxSolid(ClearButRect, new Color(0.2f, 0f, 0f, 0.6f));
+
+            // Color picker button
+            Rect ColorButRect = new Rect(0f, 144f, inRect.width / 3f, 32f);
+            Vector2 ColorPickerPos = new Vector2(UI.screenWidth - InitialSize.x, UI.screenHeight - InitialSize.y) / 2f;
+            ColorPickerPos.y += inRect.height * 1.5f;
+            if (Widgets.ButtonText(ColorButRect, "Signs_ColorButton".Translate(), true, true, true))
+            {
+                Find.WindowStack.Add(new Dialog_ColourPicker(this.curColor,
+                (newColor) =>
+                {
+                    this.curColor = newColor;
+                    SetColor(newColor);
+                },
+                position: ColorPickerPos
+                ) );
+            }
+            Widgets.DrawBoxSolid(new Rect(inRect.width / 3f + 8f, 144f, 32f, 32f), this.curColor);
+                //Widgets.DrawBoxSolid(ColorButRect, this.curColor.ToTransparent(0.3f));
 
             //int charsLeft = this.MaxNameLength - 2 - text.Length;
             //Widgets.Label(new Rect(0f, 112f, inRect.width, 30f), charsLeft.ToString() + " characters remaining");
-            Widgets.Label(new Rect(0f, 160f, inRect.width, 30f), "Beware that many lines of text could impact performance.");
-                
-            if (Widgets.ButtonText(new Rect(15f, inRect.height - 45f, inRect.width - 30f, 35f), "OK", true, true, true) || enterPressed)
+
+            if (Widgets.ButtonText(new Rect(0f, inRect.height - 45f, inRect.width, 36f), "OK", true, true, true) || enterPressed)
             {
                 AcceptanceReport acceptanceReport = this.NameIsValid(this.curName);
                 if (!acceptanceReport.Accepted)
                 {
                     if (acceptanceReport.Reason.NullOrEmpty())
                     {
-                        Messages.Message("Cannot be blank", MessageTypeDefOf.RejectInput, false);
+                        Messages.Message("Signs_BlankMessage".Translate(), MessageTypeDefOf.RejectInput, false);
                         return;
                     }
                     Messages.Message(acceptanceReport.Reason, MessageTypeDefOf.RejectInput, false);

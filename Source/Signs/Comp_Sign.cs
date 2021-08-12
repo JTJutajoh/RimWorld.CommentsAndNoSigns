@@ -310,7 +310,7 @@ namespace Dark.Signs
         private void DrawSignLabels()
         {
             Color labelcolor = this.labelColor; // ignored for now. see declaration
-            labelcolor = Settings.globalLabelColor;
+            //labelcolor = Settings.globalLabelColor;
 
             Vector2 drawpos = GetSignLabelPos();
 
@@ -341,7 +341,6 @@ namespace Dark.Signs
             //GUI.DrawTexture(new Rect(screenPos.x - x / 2f - 4f, screenPos.y, x + 8f, y), TexUI.TextBGBlack);
             GUI.color = color;
             Text.Anchor = TextAnchor.UpperCenter;
-            //Widgets.Label(new Rect(screenPos.x - x / 2f, screenPos.y - 3f, x, 999f), s);
             Widgets.Label(new Rect(screenPos.x - x / 2f, screenPos.y - 3f, x, 999f), s);
             GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
@@ -368,8 +367,8 @@ namespace Dark.Signs
 
             yield return new Command_Toggle
             {
-                defaultLabel = "Show Label",
-                defaultDesc = "If disabled, the sign's label will only show if the sign is selected.",
+                defaultLabel = "Signs_ShowGizmo".Translate(),
+                defaultDesc = "Signs_ShowGizmo_desc".Translate(),
                 hotKey = KeyBindingDefOf.Misc3,
                 icon = TexCommand.ForbidOff,
                 isActive = (() => !this.hideLabelOverride),
@@ -383,7 +382,7 @@ namespace Dark.Signs
             {
                 icon = ContentFinder<Texture2D>.Get("UI/SignSize", true),
                 defaultLabel = GetSizeName(fontSize),
-                defaultDesc = "Change the size of the label for this sign. There are 3 sizes available.",
+                defaultDesc = "Signs_SizeGismo_desc".Translate(),
                 iconDrawScale = 1.2f,
                 action = delegate ()
                 {
@@ -398,7 +397,8 @@ namespace Dark.Signs
                 yield return new Command_Action
                 {
                     icon = ContentFinder<Texture2D>.Get("UI/Buttons/Rename", true),
-                    defaultLabel = "Edit",
+                    defaultLabel = "Signs_EditGizmo".Translate(),
+                    defaultDesc = "Signs_EditGizmo_desc".Translate(),
                     action = delegate ()
                     {
                         Find.WindowStack.Add(new Dialog_RenameSign(this));
@@ -418,11 +418,11 @@ namespace Dark.Signs
             switch (f)
             {
                 case GameFont.Tiny:
-                    return "Small";
+                    return "Signs_TinyFont".Translate();
                 case GameFont.Small:
-                    return "Medium";
+                    return "Signs_SmallFont".Translate();
                 default:
-                    return "Large";
+                    return "Signs_MediumFont".Translate();
             }
         }
         public override string CompInspectStringExtra()
@@ -447,7 +447,7 @@ namespace Dark.Signs
             }
             trimmedContent = '"' + trimmedContent + '"';
 
-            stringBuilder.Append("Sign Contents:");
+            stringBuilder.Append("Signs_InspectStringPrefix".Translate());
 
 
             // Strip out empty lines
