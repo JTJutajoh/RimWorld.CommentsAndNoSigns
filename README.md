@@ -1,6 +1,8 @@
 # RimWorld.Signs
 A RimWorld mod that adds functional signs
 
+![CommentGif](https://i.imgur.com/gTgI145.gif)
+
 ![Comment](https://i.imgur.com/WJ5KiYl.png)
 ![Neolithic](https://i.imgur.com/00uDlGp.png)
 ![Stony](https://i.imgur.com/H41LhQb.png)
