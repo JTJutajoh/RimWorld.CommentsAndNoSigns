@@ -2,11 +2,11 @@
 <Defs>
 
   <DesignationDef>
-    <defName>CommentDummy</defName>
+    <defName>Comment_Designator</defName>
+    <label>Comment</label>
     <texturePath>Things/Buildings/Signs/Comment</texturePath>
     <targetType>Cell</targetType>
     <removeIfBuildingDespawned>true</removeIfBuildingDespawned>
-    <designateCancelable>false</designateCancelable>
   </DesignationDef>
-
+  
 </Defs>

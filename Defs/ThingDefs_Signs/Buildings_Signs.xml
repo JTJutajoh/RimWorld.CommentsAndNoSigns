@@ -160,180 +160,6 @@ Free to place and builds instantly. Use this for making simple comments to yours
     </graphicData>
   </ThingDef>
 
-  <!--============================== Wall signs ==============================-->
-  <ThingDef ParentName="SignBuildingBase" Name="SignWallBase" Abstract="True">
-    <building>
-      <isEdifice>false</isEdifice>
-    </building>
-    <rotatable>true</rotatable>
-    <defaultPlacingRot>South</defaultPlacingRot>
-    <clearBuildingArea>false</clearBuildingArea>
-    <altitudeLayer>BuildingOnTop</altitudeLayer>
-    <fillPercent>0</fillPercent>
-    <pathCost>0</pathCost>
-    <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
-      <Mass>8</Mass>
-      <WorkToBuild>20</WorkToBuild>
-      <Flammability>1.0</Flammability>
-      <Beauty>0</Beauty>
-    </statBases>
-  </ThingDef>
-
-  <ThingDef ParentName="SignWallBase">
-    <defName>SignWallBasic</defName>
-    <label>wall sign</label>
-    <description>A simple sign that can be hung on walls or doors.</description>
-    <comps>
-      <li Class="Dark.Signs.CompProperties_Sign">
-        <canEditContent>true</canEditContent>
-        <labelOffset_North>(0,0.2)</labelOffset_North>
-        <labelOffset_South>(0,-0.65)</labelOffset_South>
-        <labelOffset_West>(-0.5,-0.3)</labelOffset_West>
-        <labelOffset_East>(0.5,-0.3)</labelOffset_East>
-      </li>
-    </comps>
-    <costList>
-      <WoodLog>10</WoodLog>
-    </costList>
-    <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_WallBasic/WallSign</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <damageData>
-        <rect>(0.25,0.6,0.5,0.2)</rect>
-      </damageData>
-    </graphicData>
-    <uiIconOffset>(0, -0.3)</uiIconOffset>
-    <uiIconScale>1.4</uiIconScale>
-  </ThingDef>
-
-  <ThingDef ParentName="SignWallBase">
-    <defName>SignWallLargeLit</defName>
-    <label>large wall sign</label>
-    <description>A large simple sign that can be hung on walls or doors.</description>
-    <comps>
-      <li Class="Dark.Signs.CompProperties_Sign">
-        <canEditContent>true</canEditContent>
-        <labelOffset_North>(0,0.2)</labelOffset_North>
-        <labelOffset_South>(0,-0.25)</labelOffset_South>
-        <labelOffset_West>(-0.5,-0.3)</labelOffset_West>
-        <labelOffset_East>(0.5,-0.3)</labelOffset_East>
-      </li>
-      <li Class="CompProperties_Glower">
-        <glowRadius>4</glowRadius>
-        <glowColor>(80,130,245,0)</glowColor>
-      </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>20</basePowerConsumption>
-      </li>
-    </comps>
-    <costList>
-      <Steel>40</Steel>
-    </costList>
-    <size>(2,1)</size>
-    <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_WallLargeLit/LargeLit</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <damageData>
-        <rect>(0.25,0.6,0.5,0.2)</rect>
-      </damageData>
-    <drawSize>(2,2)</drawSize>
-    <drawOffset>(0,0,0)</drawOffset>
-    </graphicData>
-    <uiIconOffset>(0, 0)</uiIconOffset>
-    <uiIconScale>1</uiIconScale>
-    <researchPrerequisites>
-      <li>Electricity</li>
-    </researchPrerequisites>
-  </ThingDef>
-
-  <ThingDef ParentName="SignWallBase">
-    <defName>SignWallNeonOpen</defName>
-    <label>neon open sign</label>
-    <description>A colorful glowing sign used to welcome visitors to a business. Uses a very small amount of power.</description>
-    <comps>
-      <li Class="Dark.Signs.CompProperties_Sign">
-        <canEditContent>true</canEditContent>
-        <canBeEmpty>true</canBeEmpty>
-        <labelOffset_North>(0,-0.3)</labelOffset_North>
-        <labelOffset_South>(0,-0.98)</labelOffset_South>
-        <labelOffset_East>(0.7,-0.4)</labelOffset_East>
-        <labelOffset_West>(-0.7,-0.4)</labelOffset_West>
-        <defaultContents></defaultContents>
-      </li>
-      <li Class="CompProperties_Glower">
-        <glowRadius>3</glowRadius>
-        <glowColor>(255,60,125,0)</glowColor>
-      </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>5</basePowerConsumption>
-      </li>
-    </comps>
-    <costList>
-      <Steel>20</Steel>
-    </costList>
-    <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_NeonOpen/Open</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <damageData>
-        <rect>(0.25,0.6,0.5,0.2)</rect>
-      </damageData>
-    </graphicData>
-    <uiIconOffset>(0, -0.57)</uiIconOffset>
-    <uiIconScale>1.55</uiIconScale>
-    <researchPrerequisites>
-      <li>Electricity</li>
-    </researchPrerequisites>
-  </ThingDef>
-
-  <ThingDef ParentName="SignWallBase">
-    <defName>SignWallNeonCocktail</defName>
-    <label>neon cocktail sign</label>
-    <description>A colorful glowing sign used to welcome visitors to a bar. Uses a very small amount of power.</description>
-    <comps>
-      <li Class="Dark.Signs.CompProperties_Sign">
-        <canEditContent>true</canEditContent>
-        <canBeEmpty>true</canBeEmpty>
-        <labelOffset_North>(0,-0.3)</labelOffset_North>
-        <labelOffset_South>(0,-0.98)</labelOffset_South>
-        <labelOffset_East>(0.7,-0.4)</labelOffset_East>
-        <labelOffset_West>(-0.7,-0.4)</labelOffset_West>
-        <defaultContents></defaultContents>
-      </li>
-      <li Class="CompProperties_Glower">
-        <glowRadius>2</glowRadius>
-        <glowColor>(255,80,175,0)</glowColor>
-      </li>
-      <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>5</basePowerConsumption>
-      </li>
-    </comps>
-    <costList>
-      <Steel>20</Steel>
-    </costList>
-    <graphicData>
-      <texPath>Things/Buildings/Signs/Sign_NeonCocktail/Cocktail</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-      <damageData>
-        <rect>(0.25,0.6,0.5,0.2)</rect>
-      </damageData>
-    </graphicData>
-    <uiIconOffset>(0, -0.37)</uiIconOffset>
-    <uiIconScale>1.55</uiIconScale>
-    <researchPrerequisites>
-      <li>Electricity</li>
-    </researchPrerequisites>
-  </ThingDef>
-
   <!--============================== Neolithic ==============================-->
   <ThingDef ParentName="SignBuildingBase">
     <defName>SignWoodenMulti</defName>
@@ -538,6 +364,49 @@ Free to place and builds instantly. Use this for making simple comments to yours
 
   <!--============================== Stuffable/Stone ==============================-->
   <ThingDef ParentName="SignBuildingBase">
+    <defName>SignCairn</defName>
+    <label>Cairn</label>
+    <description>"A cairn is a man-made pile (or stack) of stones. The word cairn comes from the Scottish Gaelic: càrn"</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset>(0,0.85)</labelOffset>
+        <canBeEmpty>true</canBeEmpty>
+        <defaultContents></defaultContents>
+      </li>
+    </comps>
+    <passability>Impassable</passability>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>80</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-1</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>15</costStuffCount>
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_Cairn</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.5, 0.2, 0.2)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawSize>(1,1)</drawSize>
+      <drawOffset>(0,0,0.2)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.8</uiIconScale>
+  </ThingDef>
+  
+  <ThingDef ParentName="SignBuildingBase">
     <defName>SignObelisk</defName>
     <label>Obelisk Sign</label>
     <description>A stone obelisk with a carving on it for marking things.</description>
@@ -620,6 +489,225 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <drawOffset>(0,0,0)</drawOffset>
     </graphicData>
     <uiIconOffset>(0, 0.18)</uiIconOffset>
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignPlaque</defName>
+    <label>Ground Plaque</label>
+    <description>A metal plaque embedded in a stone base. Acts as a floor</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <defaultContents>Empty
+Plaque</defaultContents>
+      </li>
+    </comps>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <pathCost>0</pathCost>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Mass>25</Mass>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>0.2</Flammability>
+      <Beauty>2</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList>
+      <Steel>40</Steel>
+    </costList>
+    <size>(3,3)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_GroundPlaque/Sign_GroundPlaque</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2.5,2.5)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
+      <shadowData>
+        <volume>(0.2, 0.2, 0.2)</volume>
+      </shadowData>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+  </ThingDef>
+
+  <!--============================== Wall signs ==============================-->
+  <ThingDef ParentName="SignBuildingBase" Name="SignWallBase" Abstract="True">
+    <building>
+      <isEdifice>false</isEdifice>
+    </building>
+    <rotatable>true</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <clearBuildingArea>false</clearBuildingArea>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <fillPercent>0</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="SignWallBase">
+    <defName>SignWallBasic</defName>
+    <label>wall sign</label>
+    <description>A simple sign that can be hung on walls or doors.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset_North>(0,0.2)</labelOffset_North>
+        <labelOffset_South>(0,-0.65)</labelOffset_South>
+        <labelOffset_West>(-0.5,-0.3)</labelOffset_West>
+        <labelOffset_East>(0.5,-0.3)</labelOffset_East>
+      </li>
+    </comps>
+    <costList>
+      <WoodLog>10</WoodLog>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_WallBasic/WallSign</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconOffset>(0, -0.3)</uiIconOffset>
+    <uiIconScale>1.4</uiIconScale>
+  </ThingDef>
+  
+  <ThingDef ParentName="SignWallBase">
+    <defName>SignWallLED</defName>
+    <label>wall sign</label>
+    <description>A simple LED sign that can be hung on walls or doors.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset_North>(0,0.2)</labelOffset_North>
+        <labelOffset_South>(0,-0.65)</labelOffset_South>
+        <labelOffset_West>(-0.5,-0.3)</labelOffset_West>
+        <labelOffset_East>(0.5,-0.3)</labelOffset_East>
+      </li>
+    </comps>
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_WallLED/WallLED</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconOffset>(0, -0.3)</uiIconOffset>
+    <uiIconScale>1.4</uiIconScale>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="SignWallBase">
+    <defName>SignWallLargeLit</defName>
+    <label>large wall sign</label>
+    <description>A large simple sign that can be hung on walls or doors.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset_North>(0,0.2)</labelOffset_North>
+        <labelOffset_South>(0,-0.25)</labelOffset_South>
+        <labelOffset_West>(-0.5,-0.3)</labelOffset_West>
+        <labelOffset_East>(0.5,-0.3)</labelOffset_East>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>4</glowRadius>
+        <glowColor>(80,130,245,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>20</basePowerConsumption>
+      </li>
+    </comps>
+    <costList>
+      <Steel>40</Steel>
+    </costList>
+    <size>(2,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_WallLargeLit/LargeLit</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    <drawSize>(2,2)</drawSize>
+    <drawOffset>(0,0,0)</drawOffset>
+    </graphicData>
+    <uiIconOffset>(0, -0.35)</uiIconOffset>
+    <uiIconScale>1.1</uiIconScale>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <!--============================== Wall signs NEON ==============================-->
+  <ThingDef ParentName="SignWallBase" Name="SignNeonBase" Abstract="True">
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <canBeEmpty>true</canBeEmpty>
+        <labelOffset_North>(0,-0.3)</labelOffset_North>
+        <labelOffset_South>(0,-0.98)</labelOffset_South>
+        <labelOffset_East>(0.7,-0.4)</labelOffset_East>
+        <labelOffset_West>(-0.7,-0.4)</labelOffset_West>
+        <defaultContents></defaultContents>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(255,60,125,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>5</basePowerConsumption>
+      </li>
+    </comps>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <uiIconScale>1.55</uiIconScale>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+  </ThingDef>
+  
+  <ThingDef ParentName="SignNeonBase">
+    <defName>SignWallNeonOpen</defName>
+    <label>neon open sign</label>
+    <description>A colorful glowing sign used to welcome visitors to a business. Uses a very small amount of power.</description>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_NeonOpen/Open</texPath>
+    </graphicData>
+    <uiIconOffset>(0, -0.52)</uiIconOffset>
+  </ThingDef>
+
+  <ThingDef ParentName="SignNeonBase">
+    <defName>SignWallNeonCocktail</defName>
+    <label>neon cocktail sign</label>
+    <description>A colorful glowing sign used to welcome visitors to a bar. Uses a very small amount of power.</description>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_NeonCocktail/Cocktail</texPath>
+    </graphicData>
+    <uiIconOffset>(0, -0.37)</uiIconOffset>
   </ThingDef>
 
   <!--============================== Industrial ==============================-->
@@ -792,6 +880,49 @@ Free to place and builds instantly. Use this for making simple comments to yours
   </ThingDef>
 
   <ThingDef ParentName="SignBuildingBase">
+    <defName>SignWetFloor</defName>
+    <label>wet floor sign</label>
+    <description>A simple plastic sign to warn people that a surface is slippery.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <canBeEmpty>true</canBeEmpty>
+        <defaultContents>Caution
+Cuidado</defaultContents>
+      </li>
+    </comps>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <rotatable>true</rotatable>
+    <fillPercent>0.15</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <Mass>4</Mass>
+      <WorkToBuild>10</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-1</Beauty>
+    </statBases>
+    <costList>
+      <Steel>5</Steel>
+    </costList>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_WetFloor/WetFloor</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(0.4, 0.5, 0.2)</volume>
+        <offset>(0,0,-0.43)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+    </graphicData>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
+  <ThingDef ParentName="SignBuildingBase">
     <defName>SignHighway</defName>
     <label>highway sign</label>
     <description>An ancient design usually used for highways.</description>
@@ -883,8 +1014,10 @@ Free to place and builds instantly. Use this for making simple comments to yours
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
         <labelOffset>(0,1.1)</labelOffset>
-        <defaultContents>Empty
-Billboard</defaultContents>
+        <defaultContents>
+          Empty
+          Billboard
+        </defaultContents>
         <canBeEmpty>true</canBeEmpty>
       </li>
     </comps>
@@ -925,11 +1058,61 @@ Billboard</defaultContents>
     <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
   </ThingDef>
 
+  <ThingDef ParentName="SignBuildingBase">
+    <defName>SignRoadLED</defName>
+    <label>Road LED Sign</label>
+    <description>An ancient design of LED sign for marking road work and other can't-miss warnings.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <labelOffset>(0,0.85)</labelOffset>
+        <defaultContents>Road Work
+Ahead</defaultContents>
+        <canBeEmpty>true</canBeEmpty>
+      </li>
+    </comps>
+    <passability>Impassable</passability>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <rotatable>false</rotatable>
+    <fillPercent>0.45</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <costList>
+      <Steel>150</Steel>
+    </costList>
+    <size>(2,1)</size>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Sign_RoadLED/RoadLED</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2.5,2.5)</drawSize>
+      <shadowData>
+        <volume>(0.9, 1, 0.4)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.25,0.6,0.5,0.2)</rect>
+      </damageData>
+      <drawOffset>(0,0,0.5)</drawOffset>
+    </graphicData>
+    <uiIconOffset>(0,0)</uiIconOffset>
+    <uiIconScale>.8</uiIconScale>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <!--<designatorDropdown>Sign_Industrial</designatorDropdown>-->
+  </ThingDef>
+
   <!--============================== Spacer ==============================-->
   <ThingDef ParentName="SignBuildingBase">
     <defName>SignHologram</defName>
     <label>holographic sign</label>
-    <description>A spacer-tech hologram for marking and labeling things.</description>
+    <description>A spacer-tech hologram for marking and labeling things. Has its own internal power source</description>
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
@@ -947,6 +1130,7 @@ Billboard</defaultContents>
     </statBases>
     <costList>
       <Steel>60</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <graphicData>
       <texPath>Things/Buildings/Signs/Sign_Hologram</texPath>
@@ -956,6 +1140,7 @@ Billboard</defaultContents>
         <rect>(0.25,0.6,0.5,0.2)</rect>
       </damageData>
     </graphicData>
+    <uiIconOffset>(0,-0.1)</uiIconOffset>
     <researchPrerequisites>
       <li>Fabrication</li>
     </researchPrerequisites>

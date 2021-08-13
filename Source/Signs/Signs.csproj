@@ -89,29 +89,26 @@
     <Content Include="..\..\About\About.xml">
       <Link>About.xml</Link>
     </Content>
-    <Content Include="..\..\Defs\CommentDummyDesignation.xml">
-      <Link>CommentDummyDesignation.xml</Link>
+    <Content Include="..\..\Defs\Designations\CommentDummyDesignation.xml">
+      <Link>Defs\CommentDummyDesignation.xml</Link>
     </Content>
     <Content Include="..\..\Defs\SignsDesignatorCategory.xml">
-      <Link>SignsDesignatorCategory.xml</Link>
+      <Link>Defs\SignsDesignatorCategory.xml</Link>
     </Content>
     <Content Include="..\..\Defs\SignsDesignatorDropdownGroupDefs.xml">
-      <Link>SignsDesignatorDropdownGroupDefs.xml</Link>
+      <Link>Defs\SignsDesignatorDropdownGroupDefs.xml</Link>
     </Content>
     <Content Include="..\..\Defs\ThingDefs_Signs\Buildings_Signs.xml">
-      <Link>Buildings_Signs.xml</Link>
-    </Content>
-    <Content Include="..\..\Defs\ThingDefs_Signs\Buildings_SignsDecorative.xml">
-      <Link>Buildings_SignsDecorative.xml</Link>
+      <Link>Defs\Buildings_Signs.xml</Link>
     </Content>
     <Content Include="..\..\Languages\English\Keyed\Signs_Keys.xml">
       <Link>Signs_Keys.xml</Link>
     </Content>
     <Content Include="..\..\Patches\SignPatchOperations.xml">
-      <Link>SignPatchOperations.xml</Link>
+      <Link>Patches\SignPatchOperations.xml</Link>
     </Content>
     <Content Include="..\..\Patches\SignPatchOperationsIdeology.xml">
-      <Link>SignPatchOperationsIdeology.xml</Link>
+      <Link>Patches\SignPatchOperationsIdeology.xml</Link>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
