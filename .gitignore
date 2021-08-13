@@ -261,3 +261,5 @@ Source/.vs/
 *.psd
 !*.dll
 Source/Signs/obj/
+Source/Art/DescriptionImages/
+Source/Art/gifs/comment.gif
