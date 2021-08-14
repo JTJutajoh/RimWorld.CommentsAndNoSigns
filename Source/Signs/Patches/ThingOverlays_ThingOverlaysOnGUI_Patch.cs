@@ -106,7 +106,7 @@ namespace Dark.Signs
 
         public static bool ShouldDrawOverFog(Thing thing)
         {
-            return Comp_Sign.ShouldDrawThingOverFog(thing.def);
+            return Comp_Sign.BuildableCanGoOverFog(thing.def);
         }
     }
 }

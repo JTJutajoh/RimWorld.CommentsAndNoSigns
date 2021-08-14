@@ -45,16 +45,21 @@ namespace Dark.Signs
             if (!this.signComp.Props.canBeEmpty)
             {
                 result = base.NameIsValid(name); // only checks 0 length
+
+                if (!result.Accepted)
+                {
+                    return result;
+                }
             }
             if (Settings.useCharacterLimit)
             {
                 result = CheckLength(name);
+                if (!result.Accepted)
+                {
+                    return result;
+                }
             }
 
-            if (!result.Accepted)
-            {
-                return result;
-            }
             return true;
         }
 

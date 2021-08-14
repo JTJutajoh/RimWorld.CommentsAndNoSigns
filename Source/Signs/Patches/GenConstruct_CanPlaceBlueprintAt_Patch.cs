@@ -10,16 +10,24 @@ namespace Dark.Signs
     {
         static void Postfix(ref AcceptanceReport __result, BuildableDef entDef)
         {
+            if (entDef == null)
+            {
+                return;
+            }
+            if (__result == true)
+            {
+                return; // Already true, don't bother changing anything
+            }
             if (__result.Reason == "CannotPlaceInUndiscovered".Translate())
             {
-                if (Comp_Sign.ShouldDrawThingOverFog((ThingDef)entDef))
+                if (Comp_Sign.BuildableCanGoOverFog(entDef))
                 {
                     __result = true;
                 }
             }
             else if (__result.Reason == "SpaceAlreadyOccupied".Translate())
             {
-                if (Comp_Sign.ShouldDrawThingOverFog((ThingDef)entDef))
+                if (Comp_Sign.BuildableCanGoOverFog(entDef))
                 {
                     __result = true;
                 }

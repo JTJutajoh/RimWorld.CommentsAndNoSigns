@@ -11,7 +11,7 @@ namespace Dark.Signs
     {
         static void Postfix(ref bool __result, Thing t)
         {
-            if (Comp_Sign.ShouldDrawThingOverFog(t.def))
+            if (Comp_Sign.BuildableCanGoOverFog(t.def))
             {
                 __result = true;
             }

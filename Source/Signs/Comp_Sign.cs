@@ -495,7 +495,7 @@ namespace Dark.Signs
             return stringBuilder.ToString();
         }
 
-        public static bool ShouldDrawThingOverFog(ThingDef def)
+        public static bool BuildableCanGoOverFog(BuildableDef def)
         {
             if (def.defName == "Comment")
             {

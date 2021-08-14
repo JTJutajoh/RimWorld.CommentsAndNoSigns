@@ -2,7 +2,6 @@
 <Patch>
   
   <!-- ================= Ideology =================== -->
-  <!-- Terror Sculpture -->
   <Operation Class="PatchOperationFindMod">
     <mods>
       <li>Ideology</li>

@@ -168,7 +168,7 @@ Free to place and builds instantly. Use this for making simple comments to yours
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
-        <labelOffset>(0,1.2)</labelOffset>
+        <labelOffset>(0,0.9)</labelOffset>
       </li>
     </comps>
     <passability>Impassable</passability>
@@ -1014,9 +1014,8 @@ Cuidado</defaultContents>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
         <labelOffset>(0,1.1)</labelOffset>
-        <defaultContents>
-          Empty
-          Billboard
+        <defaultContents>Empty
+Billboard
         </defaultContents>
         <canBeEmpty>true</canBeEmpty>
       </li>
