@@ -3,6 +3,15 @@ Have you ever spent an hour planning out every detail of your dream mountain bas
 
 This mod adds functional signs and comments with custom text. Also adds sign functionality to some vanilla buildings. Signs can have any text you want and (by default) display a label on the map with the text you enter (Can be set to only show the label when the sign is selected). Useful for both practical purposes such as planning ahead, but also fun for roleplaying. Write epitaphs for your favorite colonists or inspiring verses to keep your colonists motivated to work.
 
+<h2>Known Issues</h2>
+
+* Mods that modify camera zoom (Like Camera+) interfere with the settings to hide labels at certain zoom levels. Low priority but I will look into it eventually. Recommended to just enable the "All zoom levels" setting (Enabled by default).
+
+<h2>Compatibility</h2>
+
+* I anticipate no compatibility issues with other mods at all. <i>Please let me know</i> if you encounter any and I will look into it.
+* <i>Sign Functionality for Modded Buildings:</i> Currently no modded buildings have sign functionality added, but it's a simple patch to add my `Dark.Signs.Comp_Sign` component to any Thing. Also simple for other mods to patch my component themselves. Please feel free to suggest mods that would benefit from it.
+
 <h2>Comments</h2>
 The core vision of this mod was always the <b>Comment</b> sign, which is a special type of sign that places instantly and at no cost, plus it can be placed anywhere you want, including over buildings or undiscovered parts of the map (Such as the interior of a mountain).
 
