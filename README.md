@@ -1,4 +1,7 @@
 # RimWorld.Signs
+
+![Preview](https://i.imgur.com/8hknLgH.jpeg)
+
 Have you ever spent an hour planning out every detail of your dream mountain base, only to forget what that big rectangle was supposed to be? Have you ever wanted to memorialize a story that happened in your colony?
 
 This mod adds functional signs and comments with custom text. Also adds sign functionality to some vanilla buildings. Signs can have any text you want and (by default) display a label on the map with the text you enter (Can be set to only show the label when the sign is selected). Useful for both practical purposes such as planning ahead, but also fun for roleplaying. Write epitaphs for your favorite colonists or inspiring verses to keep your colonists motivated to work.
@@ -31,3 +34,8 @@ Also includes these other, more thematic signs that can be used (or ignored) to 
 ![Spacer](https://i.imgur.com/TMHXZJo.png)
 ![Vanilla](https://i.imgur.com/1Xd3U7q.png)
 ![Ideo](https://i.imgur.com/tSznE4p.png)
+
+
+<h2>My other mods</h2>
+
+[![JobInBar](https://i.imgur.com/R5ajTge.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=2086300611&tscn=1629062262)
