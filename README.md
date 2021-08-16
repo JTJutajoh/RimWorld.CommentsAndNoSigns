@@ -6,6 +6,13 @@ Have you ever spent an hour planning out every detail of your dream mountain bas
 
 This mod adds functional signs and comments with custom text. Also adds sign functionality to some vanilla buildings. Signs can have any text you want and (by default) display a label on the map with the text you enter (Can be set to only show the label when the sign is selected). Useful for both practical purposes such as planning ahead, but also fun for roleplaying. Write epitaphs for your favorite colonists or inspiring verses to keep your colonists motivated to work.
 
+Every sign added by this mod can have any text you want saved to it and it will display that text as a label on the map. You are also able to cycle the font size between 3 options, as well as set any color you want for each sign's label.
+
+Comments are special buildings that cost nothing and place instantly, but even more importantly have some special Harmony patches allowing them to be placed on top of anything, including other buildings, natural walls, and even undiscovered/fogged areas. The Comment is the meat & potatoes of the mod.
+
+The core focus of this mod is the Comment, but I always like to decorate my colonies and thought some decorative signs would be fun to play with as well. I tried to cover the gamut of possible signs I could think of, but I am open to suggestions for more signs to add in future updates. I may also make modular additions with more signs related to specific themes in the future.
+Note that existing signs may receive visual updates in the future as I'm not 100% happy with all of them, so don't be surprised if your signs look better when you load your save after an update.
+
 <h2>Known Issues</h2>
 
 * Mods that modify camera zoom (Like Camera+) interfere with the settings to hide labels at certain zoom levels. Low priority but I will look into it eventually. Recommended to just enable the "All zoom levels" setting (Enabled by default).
@@ -41,5 +48,7 @@ Also includes these other, more thematic signs that can be used (or ignored) to 
 https://github.com/JTJutajoh/RimWorld.Signs
 
 <h2>My other mods</h2>
+
+Check out my other mod if you like this one. You'll probably like it too.
 
 [![JobInBar](https://i.imgur.com/R5ajTge.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=2086300611&tscn=1629062262)
