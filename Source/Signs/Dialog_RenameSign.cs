@@ -143,7 +143,9 @@ namespace Dark.Signs
                 Widgets.Label(LenghlimitLabel, "Signs_LengthLeft".Translate() + " " + (this.MaxNameLength - this.curName.Length));
                 if (this.curName.Length > this.MaxNameLength)
                 {
-                    Widgets.DrawBoxSolid(LenghlimitLabel, Color.red.ToTransparent(0.6f));
+                    Color col = Color.red;
+                    col.a = 0.6f;
+                    Widgets.DrawBoxSolid(LenghlimitLabel, col);
                 }
             }
 

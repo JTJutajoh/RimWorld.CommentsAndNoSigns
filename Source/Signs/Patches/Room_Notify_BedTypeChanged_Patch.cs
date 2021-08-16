@@ -4,6 +4,7 @@ using RimWorld;
 
 namespace Dark.Signs
 {
+#if v1_3
     [HarmonyPatch(typeof(Room), "Notify_BedTypeChanged")]
     public class Room_Notify_BedTypeChanged_Patch
     {
@@ -13,4 +14,5 @@ namespace Dark.Signs
             SignUtils.UpdateSignsOnRoomChange(__instance);
         }
     }
+#endif
 }

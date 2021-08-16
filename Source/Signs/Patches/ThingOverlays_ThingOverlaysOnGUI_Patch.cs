@@ -9,6 +9,7 @@ using HarmonyLib;
 
 namespace Dark.Signs
 {
+    
     [HarmonyPatch(typeof(ThingOverlays))]
     [HarmonyPatch("ThingOverlaysOnGUI")]
 
@@ -27,7 +28,6 @@ namespace Dark.Signs
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator, MethodBase __originalMethod)
         {
             bool foundAnchorOpCode = false;
-            int startIndex = -1;
             var nopLabel = generator.DefineLabel();
 
             // copy the original method's instructions into a list that we can modify and return
@@ -38,27 +38,25 @@ namespace Dark.Signs
             // Then, once we've found its, inject another set of instructions to check another condition after it
             // this injected condition short-circuits the if statement by jumping over the orignal second condition's instructions if true
 
-            /*
-             IL we are looking to match with comment breakdown:
+            
+            // IL we are looking to match with comment breakdown:
 
             // load local variable 'thing' onto stack
-            IL_0039: ldloc.3
+            //IL_0039: ldloc.3
             // get location of 'thing' and check if it is within camera
-			IL_003a: callvirt instance valuetype Verse.IntVec3 Verse.Thing::get_Position()
-			IL_003f: call instance bool Verse.CellRect::Contains(valuetype Verse.IntVec3)
+			//IL_003a: callvirt instance valuetype Verse.IntVec3 Verse.Thing::get_Position()
+			//IL_003f: call instance bool Verse.CellRect::Contains(valuetype Verse.IntVec3)
             // if not, fail conditional and jump past the code within the if statement
-			IL_0044: brfalse.s IL_0093 // <== IL we are looking to match
+			//IL_0044: brfalse.s IL_0093 // <== IL we are looking to match
                 
             ////INJECTED IL
             // load local variable 'thing' onto stack
-			ldloc.3
+			//ldloc.3
             // Call GetShouldDrawOverFog passing 'thing' and push result to stack
-            call bool Dark.Signs::ShouldDrawOverFog(valuetype Verse.Thing)
-            brfalse.s IL_0093 // result was false, do not draw over fog, skip over the body of the if (which draws)
+            //call bool Dark.Signs::ShouldDrawOverFog(valuetype Verse.Thing)
+            //brfalse.s IL_0093 // result was false, do not draw over fog, skip over the body of the if (which draws)
             ////END INJECTED IL
-             */
-
-            int lastIndex = -1;
+             
 
             for (var i = 0; i < codes.Count; i++)
             {
@@ -109,4 +107,5 @@ namespace Dark.Signs
             return Comp_Sign.BuildableCanGoOverFog(thing.def);
         }
     }
+    
 }

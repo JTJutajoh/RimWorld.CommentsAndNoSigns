@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- placed when a Comment thing is build over fog of war.
+  Looks exactly like a comment and is drawn over fog since it's a designation-->
+  <DesignationDef>
+    <defName>CommentDummy</defName>
+    <texturePath>Things/Buildings/Signs/Comment</texturePath>
+    <targetType>Cell</targetType>
+    <removeIfBuildingDespawned>true</removeIfBuildingDespawned>
+    <designateCancelable>false</designateCancelable>
+  </DesignationDef>
+
+</Defs>

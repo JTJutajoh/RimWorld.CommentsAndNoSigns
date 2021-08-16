@@ -116,7 +116,9 @@ namespace Dark.Signs
             if (!useCharacterLimit)
             {
                 Rect warningRect = listingStandard.Label("Signs_SettingsUseCharLimitWarning".Translate());
-                Widgets.DrawBoxSolid(warningRect, Color.red.ToTransparent(0.5f));
+                Color colred = Color.red;
+                colred.a = 0.5f;
+                Widgets.DrawBoxSolid(warningRect, colred);
             }
             else
             {

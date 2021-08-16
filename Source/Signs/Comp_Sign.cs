@@ -199,7 +199,11 @@ namespace Dark.Signs
             TaggedString taggedString;
             if (pawn == null)
             {
+#if v1_3
                 taggedString = room.Role.PostProcessedLabelCap;
+#elif v1_2
+                taggedString = room.Role.LabelCap;
+#endif
             }
             else if (pawn2 == null)
             {
@@ -280,7 +284,6 @@ namespace Dark.Signs
         private Vector2 GetLabelOffset()
         {
             Rot4 rot = this.parent.Rotation;
-            Vector2 result;
             // switch statement won't work here because the Rot4 shortcuts aren't const i guess. whatever
             if (rot == Rot4.South)
             {
@@ -505,7 +508,7 @@ namespace Dark.Signs
             {
                 return true;
             }
-            else;
+            else
             {
                 return false;
             }

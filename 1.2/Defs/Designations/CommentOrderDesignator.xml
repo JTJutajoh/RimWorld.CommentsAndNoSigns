@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <DesignationDef>
+    <defName>Comment_Designator</defName>
+    <label>Comment</label>
+    <texturePath>Things/Buildings/Signs/Comment</texturePath>
+    <targetType>Cell</targetType>
+    <removeIfBuildingDespawned>true</removeIfBuildingDespawned>
+  </DesignationDef>
+  
+</Defs>

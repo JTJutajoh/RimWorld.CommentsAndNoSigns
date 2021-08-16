@@ -14,7 +14,7 @@ namespace Dark.Signs
             {
                 return;
             }
-            if (__result == true)
+            if (__result.Accepted == true)
             {
                 return; // Already true, don't bother changing anything
             }
