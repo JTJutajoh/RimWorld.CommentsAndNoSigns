@@ -1,6 +1,6 @@
 # RimWorld.Signs
 
-![Preview](https://i.imgur.com/8hknLgH.jpeg)
+![Preview](https://i.imgur.com/TSGAvVb.jpeg)
 
 Have you ever spent an hour planning out every detail of your dream mountain base, only to forget what that big rectangle was supposed to be? Have you ever wanted to memorialize a story that happened in your colony?
 
@@ -35,6 +35,10 @@ Also includes these other, more thematic signs that can be used (or ignored) to 
 ![Vanilla](https://i.imgur.com/1Xd3U7q.png)
 ![Ideo](https://i.imgur.com/tSznE4p.png)
 
+
+<h2>Source</h2>
+
+https://github.com/JTJutajoh/RimWorld.Signs
 
 <h2>My other mods</h2>
 
