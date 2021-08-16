@@ -261,7 +261,7 @@ namespace Dark.Signs
                 case GameFont.Small:
                     return 0.7f;
                 case GameFont.Medium:
-                    return 0.9f;
+                    return 0.8f;
                 default:
                     return 0.6f;
             }
@@ -338,6 +338,10 @@ namespace Dark.Signs
             {
                 DrawSignLabel(drawpos, line, labelcolor);
                 drawpos.y += Text.LineHeight * GetLineHeightBGFraction() * 1.1f;
+                if (this.fontSize == GameFont.Medium)
+                {
+                    drawpos.y += 4f;
+                }
             }
         }
         // Draws one line

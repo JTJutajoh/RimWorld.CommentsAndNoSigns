@@ -1015,8 +1015,7 @@ Cuidado</defaultContents>
         <canEditContent>true</canEditContent>
         <labelOffset>(0,1.1)</labelOffset>
         <defaultContents>Empty
-Billboard
-        </defaultContents>
+Billboard</defaultContents>
         <canBeEmpty>true</canBeEmpty>
       </li>
     </comps>
