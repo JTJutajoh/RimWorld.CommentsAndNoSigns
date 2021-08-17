@@ -17,6 +17,8 @@ namespace Dark.Signs
         static public bool hideLabelsWhenZoomedOut = false;
         static public bool alwaysShowLabels = true;
         static public bool addCommentToggle = true;
+        static public bool commentToggleHidesComments = false;
+        static private bool lastVal_commentToggleHidesComments = commentToggleHidesComments;
         static public int minZoomLevel = (int)CameraZoomRange.Middle;
         static public int maxZoomLevel = (int)CameraZoomRange.Middle;
         static public float worldVerticalOffset = 0.5f;
@@ -109,6 +111,13 @@ namespace Dark.Signs
 
             // Toggle button
             listingStandard.CheckboxLabeled("Signs_SettingsAddToggle".Translate(), ref addCommentToggle, "Signs_SettingsAddToggle_desc".Translate());
+            listingStandard.CheckboxLabeled("Signs_SettingsToggleToolTipHidesComments".Translate(), ref commentToggleHidesComments, "Signs_SettingsToggleToolTipHidesComments_desc".Translate());
+            if (commentToggleHidesComments != lastVal_commentToggleHidesComments)
+            {
+                ShowCommentToggle.RefreshAllSigns();
+                lastVal_commentToggleHidesComments = commentToggleHidesComments;
+            }
+            
 
             listingStandard.GapLine();
 
@@ -135,6 +144,7 @@ namespace Dark.Signs
             Scribe_Values.Look(ref hideLabelsWhenZoomedOut, "hideLabelsWhenZoomedOut", false);
             Scribe_Values.Look(ref alwaysShowLabels, "alwaysShowLabels", true);
             Scribe_Values.Look(ref addCommentToggle, "addCommentToggle", true);
+            Scribe_Values.Look(ref commentToggleHidesComments, "commentToggleHidesComments", false);
             Scribe_Values.Look(ref minZoomLevel, "minZoomLevel", (int)CameraZoomRange.Middle);
             Scribe_Values.Look(ref maxZoomLevel, "maxZoomLevel", (int)CameraZoomRange.Middle);
             Scribe_Values.Look(ref worldVerticalOffset, "worldVerticalOffset", 0.5f);

@@ -18,6 +18,31 @@ namespace Dark.Signs
 
 
         public bool hideLabelOverride = false;
+        private Graphic HiddenGraphic;
+        public Graphic CurrentGraphic
+        {
+            get
+            {
+                Log.Message("Getting comment graphic");
+                Log.Message(Settings.commentToggleHidesComments.ToString() + " " + (ShowCommentToggle.drawComments == false).ToString() + " " + (this.parent.def.defName == "Comment").ToString());
+                if (Settings.commentToggleHidesComments && ShowCommentToggle.drawComments == false && this.parent.def.defName == "Comment")
+                {
+                    Log.Message("Returning hidden graphic");
+                    if (this.HiddenGraphic == null)
+                    {
+                        this.HiddenGraphic = GraphicDatabase.Get(this.parent.def.graphicData.graphicClass, this.parent.def.graphicData.texPath + "_Hidden",
+                            this.parent.def.graphicData.shaderType.Shader, this.parent.def.graphicData.drawSize, this.parent.DrawColor, this.parent.DrawColorTwo, null);
+                    }
+                    return this.HiddenGraphic;
+                }
+                return this.parent.DefaultGraphic;
+            }
+        }
+
+        public void NotifyVisibilityChange()
+        {
+            this.parent.DirtyMapMesh(this.parent.Map);
+        }
 
         // init to null so we can check on spawn if there's any existing content
         private string _signContent;
@@ -99,6 +124,11 @@ namespace Dark.Signs
                     Log.Error("Null label color loaded");
                 }
                 RemoveExtraLineEndings();
+            }
+
+            if (this.parent.def.defName == "Comment")
+            {
+                ShowCommentToggle.RegisterForNotify(this);
             }
         }
 

@@ -13,6 +13,8 @@ namespace Dark.Signs
     public class ShowCommentToggle
     {
         public static bool drawComments = true;
+        private static bool lastVal = drawComments;
+        private static List<Comp_Sign> NotifyList;
         public static void Postfix(WidgetRow row, bool worldView)
         {
             if (worldView)
@@ -26,6 +28,28 @@ namespace Dark.Signs
             }
 
             row.ToggleableIcon(ref drawComments, ContentFinder<Texture2D>.Get("UI/CommentUI", true), "Signs_ToggleToolTip".Translate(), SoundDefOf.Mouseover_ButtonToggle);
+            if (drawComments != lastVal)
+            {
+                RefreshAllSigns();
+
+                lastVal = drawComments;
+            }
+        }
+
+        public static void RefreshAllSigns()
+        {
+            foreach (Comp_Sign sign in NotifyList)
+            {
+                sign.NotifyVisibilityChange();
+            }
+        }
+        public static void RegisterForNotify(Comp_Sign inst)
+        {
+            if (NotifyList == null)
+            {
+                NotifyList = new List<Comp_Sign>();
+            }
+            NotifyList.Add(inst);
         }
     }
 }

@@ -23,7 +23,7 @@
   <Signs_PasteGizmo>Paste Sign</Signs_PasteGizmo>
   <Signs_PasteGizmo_desc>Overwrite this sign's content and settings with those previously copied to the clipboard</Signs_PasteGizmo_desc>
   <Signs_InspectStringPrefix>Sign Contents:</Signs_InspectStringPrefix>
-  <Signs_ToggleToolTip>Toggle visibility of sign labels.</Signs_ToggleToolTip>
+  <Signs_ToggleToolTip>Toggle visibility of sign labels. Labels can still be seen if a sign is selected.</Signs_ToggleToolTip>
   <Signs_SettingsDisplay>Display settings</Signs_SettingsDisplay>
   <Signs_SettingsColor>Label default color</Signs_SettingsColor>
   <Signs_SettingsYOffset>Label vertical offset:</Signs_SettingsYOffset>
@@ -36,6 +36,7 @@
   <Signs_SettingsMaxZoom>Maximum Zoom level</Signs_SettingsMaxZoom>
   <Signs_SettingsMinZoom>Minimum Zoom level</Signs_SettingsMinZoom>
   <Signs_SettingsAddToggle>Add label toggle button</Signs_SettingsAddToggle>
+  <Signs_SettingsToggleToolTipHidesComments>Hide comments as well as sign labels when toggle is off</Signs_SettingsToggleToolTipHidesComments>
   <Signs_SettingsAddToggle_desc>Whether or not the button for quickly toggling all sign labels at once should be added to the UI in the bottom right. Turn this off if you want them to always be visible/invisible and your UI is cluttered.</Signs_SettingsAddToggle_desc>
   <Signs_SettingsUseCharLimit>Use character limit</Signs_SettingsUseCharLimit>
   <Signs_SettingsUseCharLimitWarning>ONLY DISABLE CHARACTER LIMIT IF YOU KNOW WHAT YOU'RE DOING. Very long labels will cause your game to lag and your save files to get huge.</Signs_SettingsUseCharLimitWarning>

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Building_Comment.cs" />
     <Compile Include="CommentContentClipboard.cs" />
     <Compile Include="Comp_Sign.cs" />
     <Compile Include="Dialog_RenameSign.cs" />

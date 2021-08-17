@@ -26,6 +26,8 @@ Free to place and builds instantly. Use this for making simple comments to yours
         <defaultContents>Empty Comment</defaultContents>
       </li>
     </comps>
+    <tickerType>Rare</tickerType>
+	<thingClass>Dark.Signs.Building_Comment</thingClass>
     <altitudeLayer>MetaOverlays</altitudeLayer>
     <clearBuildingArea>false</clearBuildingArea>
     <canOverlapZones>True</canOverlapZones>
