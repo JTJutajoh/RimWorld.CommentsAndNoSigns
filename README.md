@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RimWorld.Signs
 
 ![Preview](https://i.imgur.com/TSGAvVb.jpeg)
@@ -54,3 +55,9 @@ https://github.com/JTJutajoh/RimWorld.Signs
 Check out my other mod if you like this one. You'll probably like it too.
 
 [![JobInBar](https://i.imgur.com/R5ajTge.png)](https://steamcommunity.com/sharedfiles/filedetails/?id=2086300611&tscn=1629062262)
+=======
+# RimWorld.CommentsAndNoSigns
+Fork of my RimWorld.Signs project, but with only the comment and supporting code
+
+main project at https://github.com/JTJutajoh/RimWorld.Signs
+>>>>>>> 8fb1979c95dc32dd9fb7dabaa61e863f52232cd1
