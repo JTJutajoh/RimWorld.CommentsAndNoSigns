@@ -12,11 +12,13 @@
     <stealable>false</stealable>
   </ThingDef>
 
+  <!--============================== Special ==============================-->
   <!--============================== Comment ==============================-->
   <ThingDef ParentName="SignWithCustomLabelBase">
     <defName>Comment</defName>
     <label>comment</label>
-    <description>Leave comments to plan ahead or mark things to be remembered.#x000AFree to place and builds instantly. Use this for making simple comments to yourself.</description>
+    <description>Leave comments to plan ahead or mark things to be remembered.
+Free to place and builds instantly. Use this for making simple comments to yourself.</description>
     <comps>
       <li Class="Dark.Signs.CompProperties_Sign">
         <canEditContent>true</canEditContent>
@@ -24,8 +26,6 @@
         <defaultContents>Empty Comment</defaultContents>
       </li>
     </comps>
-    <tickerType>Rare</tickerType>
-	  <thingClass>Dark.Signs.Building_Comment</thingClass>
     <altitudeLayer>MetaOverlays</altitudeLayer>
     <clearBuildingArea>false</clearBuildingArea>
     <canOverlapZones>True</canOverlapZones>
@@ -56,5 +56,5 @@
     </graphicData>
   </ThingDef>
   
-
+  
 </Defs>
