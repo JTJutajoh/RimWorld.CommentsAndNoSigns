@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LanguageData>
+  <Signs_SettingsCategory>Signs and Comments</Signs_SettingsCategory>
+  <Signs_SetSign>Signer le contenu enregistré</Signs_SetSign>
+  <Signs_EditHeader>Entrez le texte de ce panneau</Signs_EditHeader>
+  <Signs_LengthWarning>Attention, de nombreuses lignes de texte peuvent avoir un impact sur les performances.</Signs_LengthWarning>
+  <Signs_LengthLeft>Caractères restants:</Signs_LengthLeft>
+  <Signs_TooLong>Le contenu du signe est trop long. La limite de caractères peut être ajustée ou désactivée dans les paramètres du mod.</Signs_TooLong>
+  <Signs_ClearButton>EFFECER</Signs_ClearButton>
+  <Signs_ColorButton>Changer de couleur</Signs_ColorButton>
+  <Signs_BlankMessage>Ne peut être vide</Signs_BlankMessage>
+  <Signs_ShowGizmo>Afficher l'étiquette</Signs_ShowGizmo>
+  <Signs_ShowGizmo_desc>Si cette option est désactivée, l'étiquette du panneau ne s'affichera que si le panneau est sélectionné.</Signs_ShowGizmo_desc>
+  <Signs_TinyFont>Petit</Signs_TinyFont>
+  <Signs_SmallFont>Moyen</Signs_SmallFont>
+  <Signs_MediumFont>Grand</Signs_MediumFont>
+  <Signs_SizeGismo_desc>Modifiez la taille de l'étiquette de ce panneau. Il y a 3 tailles disponibles.</Signs_SizeGismo_desc>
+  <Signs_EditGizmo>Editer</Signs_EditGizmo>
+  <Signs_EditGizmo_desc>Modifiez le contenu et la couleur de ce signe.</Signs_EditGizmo_desc>
+  <Signs_CopyGizmo>Copier panneau</Signs_CopyGizmo>
+  <Signs_CopyGizmo_desc>Copiez les paramètres de ce panneau pour pouvoir les coller sur un autre panneau</Signs_CopyGizmo_desc>
+  <Signs_PasteGizmo>Coller panneau</Signs_PasteGizmo>
+  <Signs_PasteGizmo_desc>Écraser le contenu et les paramètres de ce signe avec ceux précédemment copiés dans le presse-papiers</Signs_PasteGizmo_desc>
+  <Signs_InspectStringPrefix>Contenu du signe :</Signs_InspectStringPrefix>
+  <Signs_ToggleToolTip>Basculer la visibilité des étiquettes des panneaux. Les étiquettes sont toujours visibles si un panneau est sélectionné.</Signs_ToggleToolTip>
+  <Signs_SettingsDisplay>Paramètres d'affichage</Signs_SettingsDisplay>
+  <Signs_SettingsColor>Couleur par défaut de l'étiquette</Signs_SettingsColor>
+  <Signs_SettingsYOffset>Décalage vertical de l'étiquette :</Signs_SettingsYOffset>
+  <Signs_SettingsAllZooms>Afficher les étiquettes des panneaux à tous les zooms</Signs_SettingsAllZooms>
+  <Signs_SettingsAllZooms_desc>Affichez les étiquettes des panneaux à n'importe quel niveau de zoom. Toutes les étiquettes de signe peuvent être activées et désactivées à tout moment à l'aide du bouton de bulle de dialogue ajouté en bas à droite de l'interface utilisateur du jeu.</Signs_SettingsAllZooms_desc>
+  <Signs_SettingsHideOut>Masquer les étiquettes de signe lors d'un zoom arrière</Signs_SettingsHideOut>
+  <Signs_SettingsHideOut_desc>Afficher uniquement les étiquettes de signe lorsque la caméra est zoomée plus près que le seuil ci-dessous</Signs_SettingsHideOut_desc>
+  <Signs_SettingsHideIn>Masquer les étiquettes de signe lors d'un zoom avant</Signs_SettingsHideIn>
+  <Signs_SettingsHideIn_desc>N'afficher les étiquettes de signalisation que lorsque la caméra fait un zoom arrière au-delà du seuil ci-dessous</Signs_SettingsHideIn_desc>
+  <Signs_SettingsMaxZoom>Zoom Maximum </Signs_SettingsMaxZoom>
+  <Signs_SettingsMinZoom>Zoom Minimum</Signs_SettingsMinZoom>
+  <Signs_SettingsAddToggle>Ajouter un bouton bascule d'étiquette</Signs_SettingsAddToggle>
+  <Signs_SettingsToggleToolTipHidesComments>Masquer les commentaires ainsi que les étiquettes de signe lorsque la bascule est désactivée</Signs_SettingsToggleToolTipHidesComments>
+  <Signs_SettingsAddToggle_desc>Si oui ou non le bouton permettant de basculer rapidement toutes les étiquettes de panneau à la fois doit être ajouté à l'interface utilisateur en bas à droite. Désactivez cette option si vous voulez qu'ils soient toujours visibles/invisibles et que votre interface utilisateur soit encombrée.</Signs_SettingsAddToggle_desc>
+  <Signs_SettingsUseCharLimit>Utiliser la limite de caractères</Signs_SettingsUseCharLimit>
+  <Signs_SettingsUseCharLimitWarning>DÉSACTIVEZ LA LIMITE DE CARACTÈRES UNIQUEMENT SI VOUS SAVEZ CE QUE VOUS FAITES. Les étiquettes très longues entraîneront un décalage de votre jeu et vos fichiers de sauvegarde deviendront énormes.</Signs_SettingsUseCharLimitWarning>
+  <Signs_SettingsUseCharLimit_desc>FAITES ATTENTION À LA DÉSACTIVATION. Bien que les choses devraient toujours fonctionner, vous pouvez provoquer un décalage important avec un contenu de signe énorme et gonfler votre fichier de sauvegarde. En général, c'est une bonne idée de laisser cette option.</Signs_SettingsUseCharLimit_desc>
+</LanguageData>

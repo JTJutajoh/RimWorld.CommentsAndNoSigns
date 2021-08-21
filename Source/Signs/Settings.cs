@@ -112,7 +112,7 @@ namespace Dark.Signs
             // Toggle button
             listingStandard.CheckboxLabeled("Signs_SettingsAddToggle".Translate(), ref addCommentToggle, "Signs_SettingsAddToggle_desc".Translate());
             listingStandard.CheckboxLabeled("Signs_SettingsToggleToolTipHidesComments".Translate(), ref commentToggleHidesComments, "Signs_SettingsToggleToolTipHidesComments_desc".Translate());
-            if (commentToggleHidesComments != lastVal_commentToggleHidesComments)
+            if (commentToggleHidesComments != lastVal_commentToggleHidesComments && Find.CurrentMap != null)
             {
                 ShowCommentToggle.RefreshAllSigns();
                 lastVal_commentToggleHidesComments = commentToggleHidesComments;

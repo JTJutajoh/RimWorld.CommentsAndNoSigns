@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Comment -->
+
+  <Comment.label>commentaire</Comment.label>
+  <Comment.description>Laissez des commentaires pour planifier à l'avance ou marquer les choses à retenir.
+Placement libre et construction instantanée. Utilisez-le pour vous faire des commentaires simples.</Comment.description>
+
+
+  <!-- Room sign -->
+
+  <RoomSign.label>panneau pièce</RoomSign.label>
+  <RoomSign.description>Un panneau qui prend automatiquement le nom de la pièce dans laquelle il est placé comme étiquette et se met à jour si le rôle de la pièce change.</RoomSign.description>
+
+
+  <!-- Simple sign -->
+
+  <SimpleSign.label>panneau simple</SimpleSign.label>
+  <SimpleSign.description>Un simple panneau sur lequel peut être écrit n'importe quoi pour aider à se souvenir de choses ou à marquer des choses pour l'avenir.</SimpleSign.description>
+
+
+  <!-- Neolithic -->
+
+  <SignWoodenMulti.label>poteau en bois</SignWoodenMulti.label>
+  <SignWoodenMulti.description>Un poteau rustique comportant plusieurs panneaux.</SignWoodenMulti.description>
+
+  <SignHome.label>panneau maison</SignHome.label>
+  <SignHome.description>Un simple panneau habituellement utilisé pour marquer les maisons.</SignHome.description>
+
+  <SignArrow_Wood.label>panneau flèche</SignArrow_Wood.label>
+  <SignArrow_Wood.description>Un simple signe qui pointe vers quelque chose.</SignArrow_Wood.description>
+
+  <SignHanging.label>panneau suspendu</SignHanging.label>
+  <SignHanging.description>Un signe simple à accrocher à un mur</SignHanging.description>
+
+  <SignPanelWood.label>panneau en bois</SignPanelWood.label>
+  <SignPanelWood.description>Un grand panneau en bois composé d'un panneau avec de la place pour beaucoup de texte pour écrire ce que vous voulez.</SignPanelWood.description>
+
+
+  <!-- Stuffable/Stone -->
+
+  <SignCairn.label>cairn</SignCairn.label>
+  <SignCairn.description>Un cairn est un tas de pierres fabriqué par l'homme. Le mot cairn vient du gaélique écossais : càrn.</SignCairn.description>
+
+  <SignObelisk.label>obélisque</SignObelisk.label>
+  <SignObelisk.description>Un obélisque en pierre avec une sculpture dessus pour marquer les choses.</SignObelisk.description>
+
+  <SignSlab.label>panneau en pierre</SignSlab.label>
+  <SignSlab.description>Une grande dalle de pierre pour graver des mots et autres marquages.</SignSlab.description>
+
+  <SignPlaque.label>plaque</SignPlaque.label>
+  <SignPlaque.description>Une plaque métallique incrustée dans un socle en pierre. Agit comme un plancher.</SignPlaque.description>
+
+
+  <!-- Wall signs -->
+
+  <SignWallBasic.label>pancarte murale</SignWallBasic.label>
+  <SignWallBasic.description>Un panneau simple qui peut être accroché sur les murs ou les portes.</SignWallBasic.description>
+
+  <SignWallLED.label>enseigne LED</SignWallLED.label>
+  <SignWallLED.description>Une simple enseigne LED qui peut être accrochée aux murs ou aux portes.</SignWallLED.description>
+
+  <SignWallLargeLit.label>grande enseigne LED</SignWallLargeLit.label>
+  <SignWallLargeLit.description>Une grande enseigne simple qui peut être accrochée aux murs ou aux portes.</SignWallLargeLit.description>
+
+
+  <!-- Wall signs NEON -->
+
+  <SignWallNeonOpen.label>enseigne néon ''ouvert''</SignWallNeonOpen.label>
+  <SignWallNeonOpen.description>Une enseigne lumineuse colorée utilisée pour accueillir des visiteurs. Utilise une très petite quantité d'énergie.</SignWallNeonOpen.description>
+
+  <SignWallNeonCocktail.label>enseigne néon ''cocktail''</SignWallNeonCocktail.label>
+  <SignWallNeonCocktail.description>Une enseigne lumineuse colorée utilisée pour accueillir des visiteurs dans un bar. Utilise une très petite quantité d'énergie.</SignWallNeonCocktail.description>
+
+
+  <!-- Industrial -->
+
+  <SignIndustrial.label>panneau industriel</SignIndustrial.label>
+  <SignIndustrial.description>Une enseigne en métal brillant. plus joli qu'un panneau simple.</SignIndustrial.description>
+
+  <SignHangingIndustrial.label>plaque murale</SignHangingIndustrial.label>
+  <SignHangingIndustrial.description>Une simple plaque métallique à accrocher au mur.</SignHangingIndustrial.description>
+
+  <SignPanel.label>panneau moderne</SignPanel.label>
+  <SignPanel.description>Un grand panneau avec de la place pour beaucoup de texte pour écrire ce que vous voulez. Plutôt jolie.</SignPanel.description>
+
+  <SignHazard.label>panneau danger</SignHazard.label>
+  <SignHazard.description>Un panneau en métal brillant aux couleurs vives pour prévenir des dangers.</SignHazard.description>
+
+  <SignWetFloor.label>panneau sol glissant</SignWetFloor.label>
+  <SignWetFloor.description>Un simple panneau en plastique pour avertir les gens qu'une surface est glissante.</SignWetFloor.description>
+
+  <SignHighway.label>panneau autoroute</SignHighway.label>
+  <SignHighway.description>Une conception ancienne généralement utilisée pour les autoroutes.</SignHighway.description>
+
+  <SignNature.label>panneau nature</SignNature.label>
+  <SignNature.description>Un panneau habituellement utilisé pour transmettre des informations sur la faune ou la flore de la région.</SignNature.description>
+
+  <SignBillboard.label>panneau publicitaire</SignBillboard.label>
+  <SignBillboard.description>Un très grand panneau surélevé pour faire de la publicité afin que personne ne puisse le manquer.</SignBillboard.description>
+
+  <SignRoadLED.label>panneau travaux</SignRoadLED.label>
+  <SignRoadLED.description>Une ancienne conception de panneau LED pour le marquage des travaux routiers et d'autres avertissements à ne pas manquer.</SignRoadLED.description>
+
+
+  <!-- Spacer -->
+
+  <SignHologram.label>panneau holographique</SignHologram.label>
+  <SignHologram.description>Un hologramme de technologie spatiale pour marquer et étiqueter les choses. Possède sa propre source d'alimentation interne.</SignHologram.description>
+
+
+  <!-- Arches -->
+
+  <SignArchWood.label>arche rustique</SignArchWood.label>
+  <SignArchWood.description>Une grande arche en bois avec un panneau avec de la place pour beaucoup de texte pour écrire ce que vous voulez.</SignArchWood.description>
+
+  <SignArchWoodRustic.label>arche en bois</SignArchWoodRustic.label>
+  <SignArchWoodRustic.description>Une grande arche en bois avec un panneau avec de la place pour beaucoup de texte pour écrire ce que vous voulez.</SignArchWoodRustic.description>
+
+
+</LanguageData>
