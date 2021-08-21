@@ -8,8 +8,7 @@
 		<li>1.2</li>
   </supportedVersions>
   <description>Adds placeable comments that show ingame labels with your custom text, to organize things and plan ahead.
-Also adds sign functionality to a number of vanilla objects.
-  </description>  
+Fork of my Signs mod but with only comments and no signs.</description>  
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
@@ -21,4 +20,7 @@ Also adds sign functionality to a number of vanilla objects.
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
+  <incompatibleWith>
+    <li>Dark.Signs</li>
+  </incompatibleWith>
 </ModMetaData>
