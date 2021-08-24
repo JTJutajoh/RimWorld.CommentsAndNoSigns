@@ -21,10 +21,6 @@ Fork of my Signs mod but with only comments and no signs.</description>
     <li>brrainz.harmony</li>
   </loadAfter>
   <incompatibleWith>
-<<<<<<< HEAD
     <li>Dark.Signs</li>
-=======
-    <li>Dark.CommentsAndNoSigns</li>
->>>>>>> upstream/master
   </incompatibleWith>
 </ModMetaData>
