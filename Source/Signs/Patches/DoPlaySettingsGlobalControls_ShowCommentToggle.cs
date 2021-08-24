@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Dark.Signs
 {
     [HarmonyPatch(typeof(PlaySettings), nameof(PlaySettings.DoPlaySettingsGlobalControls))]
-    public class ShowCommentToggle
+    public class DoPlaySettingsGlobalControls_ShowCommentToggle
     {
         public static bool drawComments = true;
         private static bool lastVal = drawComments;

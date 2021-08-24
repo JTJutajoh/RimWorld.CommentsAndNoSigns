@@ -88,16 +88,6 @@ namespace Dark.Signs
                 }
             }
 
-            // return the rest of the original instructions
-            //if (lastIndex > -1) // did we find our anchor and successfully inject code?
-            //{
-            //    yield return codes.GetRange(lastIndex, codes.Count-lastIndex);
-            //}
-            //else
-            //{
-            //    Log.Error("(Signs) Error patching ThingOverlaysOnGUI. did not find the target instruction. Did RimWorld update?");
-            //}
-
             //return codes.AsEnumerable();
             //yield break;
         }

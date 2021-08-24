@@ -40,8 +40,7 @@ namespace Dark.Signs
         protected override AcceptanceReport NameIsValid(string name)
         {
             AcceptanceReport result = new AcceptanceReport();
-            result = true;
-            //AcceptanceReport result = base.NameIsValid(name); // makes sure it's longer than 0
+            result = true; // Doesn't work in 1.2 i think
             if (!this.signComp.Props.canBeEmpty)
             {
                 result = base.NameIsValid(name); // only checks 0 length
@@ -75,7 +74,7 @@ namespace Dark.Signs
 
         // Sanitize the user's input so that no one comes to me complaining about corrupted saves
         // because they thought it would be a bright idea to put xml tags in their sign
-        private string SanitizeInput(string raw)
+        static private string SanitizeInput(string raw)
         {
             string sanitized = raw;
             sanitized = System.Security.SecurityElement.Escape(raw);
@@ -85,11 +84,6 @@ namespace Dark.Signs
 
         protected override void SetName(string name)
         {
-            /*if (this.sign != null)
-            {
-                this.sign.signContent = name.Trim();
-            }*/
-
             name = SanitizeInput(name);
 
             if (this.signComp != null)
@@ -112,6 +106,7 @@ namespace Dark.Signs
             }
         }
 
+        // Expand the dialog window
         public override Vector2 InitialSize
         {
             get
@@ -185,7 +180,8 @@ namespace Dark.Signs
             //int charsLeft = this.MaxNameLength - 2 - text.Length;
             //Widgets.Label(new Rect(0f, 112f, inRect.width, 30f), charsLeft.ToString() + " characters remaining");
 
-            if (Widgets.ButtonText(new Rect(0f, inRect.height - 45f, inRect.width, 36f), "OK", true, true, true) || enterPressed)
+            // OK Button
+            if (Widgets.ButtonText(new Rect(0f, inRect.height - 45f, inRect.width, 36f), "OK".Translate(), true, true, true) || enterPressed)
             {
                 AcceptanceReport acceptanceReport = this.NameIsValid(this.curName);
                 if (!acceptanceReport.Accepted)

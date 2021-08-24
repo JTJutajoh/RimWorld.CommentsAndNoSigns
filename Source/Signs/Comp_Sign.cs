@@ -23,10 +23,12 @@ namespace Dark.Signs
         {
             get
             {
-                if (Settings.commentToggleHidesComments && ShowCommentToggle.drawComments == false && this.parent.def.defName == "Comment")
+                // Swap out the graphic if comment graphics are set to be hidden currently
+                if (Settings.commentToggleHidesComments && DoPlaySettingsGlobalControls_ShowCommentToggle.drawComments == false && this.parent.def.defName == "Comment")
                 {
                     if (this.HiddenGraphic == null)
                     {
+                        // Load the alternate graphic 
                         this.HiddenGraphic = GraphicDatabase.Get(this.parent.def.graphicData.graphicClass, this.parent.def.graphicData.texPath + "_Hidden",
                             this.parent.def.graphicData.shaderType.Shader, this.parent.def.graphicData.drawSize, this.parent.DrawColor, this.parent.DrawColorTwo, null);
                     }
@@ -38,6 +40,7 @@ namespace Dark.Signs
 
         public void NotifyVisibilityChange()
         {
+            // Notified usually by the toggle comment button, possibly by the Settings window
             this.parent.DirtyMapMesh(this.parent.Map);
         }
 
@@ -68,7 +71,6 @@ namespace Dark.Signs
             }
         }
 
-        // This property is ignored for now, in favor of getting the global setting at draw time
         private Color _labelColor = Settings.globalLabelColor;
         public Color labelColor
         {
@@ -125,10 +127,11 @@ namespace Dark.Signs
 
             if (this.parent.def.defName == "Comment")
             {
-                ShowCommentToggle.RegisterForNotify(this);
+                DoPlaySettingsGlobalControls_ShowCommentToggle.RegisterForNotify(this);
             }
         }
 
+        // Content utilities
         private void RemoveExtraLineEndings()
         {
             if (signContent == null)
@@ -140,6 +143,18 @@ namespace Dark.Signs
             signContent = orig.Replace("\r", "");
         }
 
+        public static string UnescapeContents(string raw)
+        {
+            string result = raw;
+            result = result.Replace("&apos;", "'");
+            result = result.Replace("&quot;", "\"");
+            result = result.Replace("&gt;", ">");
+            result = result.Replace("&lt;", "<");
+            result = result.Replace("&amp;", "&");
+            return result;
+        }
+
+        // Room sign methods
         public void SetContentsFromRoom()
         {
             Room room = this.parent.GetRoom();
@@ -154,6 +169,7 @@ namespace Dark.Signs
         public override void CompTickRare()
         {
             base.CompTickRare();
+            // Only use the tick if we're a room sign for performance reasons. Most other signs shouldn't be set to tick at all anyway
             if (Props.isRoomSign)
             {
                 // On rare ticks, force an update to check if the room has changed and wasn't caught by a notify.
@@ -161,6 +177,7 @@ namespace Dark.Signs
                 SetContentsFromRoom(); // THIS MIGHT KILL PERFORMANCE with many signs on the map at once
             }
         }
+
 
         private bool ShouldDrawLabel()
         {
@@ -172,7 +189,7 @@ namespace Dark.Signs
                 return false;
 
             // Check if the button in the bottom right is toggled on
-            if (ShowCommentToggle.drawComments == false)
+            if (DoPlaySettingsGlobalControls_ShowCommentToggle.drawComments == false)
                 return false;
 
             // Check if we should ignore zoom level
@@ -241,17 +258,6 @@ namespace Dark.Signs
                 taggedString = "CouplesRoom".Translate(pawn.LabelShort, pawn2.LabelShort, room.Role.label, pawn.Named("PAWN1"), pawn2.Named("PAWN2"));
             }
             return taggedString;
-        }
-
-        public static string UnescapeContents(string raw)
-        {
-            string result = raw;
-            result = result.Replace("&apos;", "'");
-            result = result.Replace("&quot;", "\"");
-            result = result.Replace("&gt;", ">");
-            result = result.Replace("&lt;", "<");
-            result = result.Replace("&amp;", "&");
-            return result;
         }
 
         private IEnumerable<string> DoSignContents()
@@ -419,16 +425,12 @@ namespace Dark.Signs
             }
 
             // Don't even show the sign gizmos if the sign doesn't belong to the player faction
-            if (this.parent.Faction == null)
+            if (this.parent.Faction == null || !this.parent.Faction.IsPlayer)
             {
                 yield break;
             }
 
-            if (!this.parent.Faction.IsPlayer)
-            {
-                yield break;
-            }
-
+            // show/hide
             yield return new Command_Toggle
             {
                 defaultLabel = "Signs_ShowGizmo".Translate(),
@@ -441,7 +443,7 @@ namespace Dark.Signs
                     this.hideLabelOverride = !this.hideLabelOverride;
                 }
             };
-
+            // font size
             yield return new Command_Action
             {
                 icon = ContentFinder<Texture2D>.Get("UI/SignSize", true),
@@ -470,6 +472,7 @@ namespace Dark.Signs
                     hotKey = KeyBindingDefOf.Misc1
                 };
 
+                // copy/paste
                 foreach (Gizmo gizmo in CommentContentClipboard.CopyPasteGizmosFor(this))
                 {
                     yield return gizmo;
@@ -477,6 +480,7 @@ namespace Dark.Signs
             }
             yield break;
         }
+        // Returns front-facing font names instead of the internal ones which are confusing
         private static string GetSizeName(GameFont f)
         {
             switch (f)
@@ -493,6 +497,7 @@ namespace Dark.Signs
         {
             StringBuilder stringBuilder = new StringBuilder();
 
+            // Debug stuff
             /*stringBuilder.Append(hideLabelOverride ? "Hidden. " : "Visible. ");
             stringBuilder.Append("Size: ");
             stringBuilder.Append(Building_Sign.GetSizeName(fontSize));
@@ -503,7 +508,10 @@ namespace Dark.Signs
                 return "";
             }
 
-            string trimmedContent = Comp_Sign.UnescapeContents(this._signContent.Trim());
+            string trimmedContent = this.signContent;
+            // Remove ending whitespace
+            trimmedContent = trimmedContent.Trim();
+            trimmedContent = Comp_Sign.UnescapeContents(trimmedContent);
             if (trimmedContent.Length <= 0)
             {
                 // Don't add anything if there's no sign content
@@ -531,6 +539,7 @@ namespace Dark.Signs
 
         public static bool BuildableCanGoOverFog(BuildableDef def)
         {
+            //TODO make this a DefModExtension
             if (def.defName == "Comment")
             {
                 return true;
