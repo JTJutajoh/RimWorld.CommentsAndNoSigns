@@ -23,11 +23,8 @@ namespace Dark.Signs
         {
             get
             {
-                Log.Message("Getting comment graphic");
-                Log.Message(Settings.commentToggleHidesComments.ToString() + " " + (ShowCommentToggle.drawComments == false).ToString() + " " + (this.parent.def.defName == "Comment").ToString());
                 if (Settings.commentToggleHidesComments && ShowCommentToggle.drawComments == false && this.parent.def.defName == "Comment")
                 {
-                    Log.Message("Returning hidden graphic");
                     if (this.HiddenGraphic == null)
                     {
                         this.HiddenGraphic = GraphicDatabase.Get(this.parent.def.graphicData.graphicClass, this.parent.def.graphicData.texPath + "_Hidden",
