@@ -107,7 +107,7 @@ namespace Dark.Signs
                     Find.WindowStack.Add(new Dialog_RenameSign(this));
                 }
 
-                if (this.parent.def.defName == "Comment" && this.parent.Fogged())
+                if (Comp_Sign.BuildableCanGoOverFog(this.parent.def) && this.parent.Fogged())
                 {
                     //Messages.Message("Spawning dummy designation", MessageTypeDefOf.CautionInput, false);
                     DesignationManager designationManager = this.parent.Map.designationManager;
