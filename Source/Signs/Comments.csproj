@@ -57,7 +57,7 @@
     <Compile Include="Patches\ThingOverlays_ThingOverlaysOnGUI_Patch.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShowCommentToggle.cs" />
+    <Compile Include="Patches\DoPlaySettingsGlobalControls_ShowCommentToggle.cs" />
     <Compile Include="SignUtils.cs" />
     <Compile Include="Patches\ThingSelectionUtility_SelectableByMapClick_Patch.cs" />
   </ItemGroup>

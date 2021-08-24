@@ -10,6 +10,7 @@ using Verse.Sound;
 
 namespace Dark.Signs
 {
+	// TODO make a clipboard class/struct instead of a bunch of fields
     public static class CommentContentClipboard
     {
         private static string copiedString = "";
@@ -42,6 +43,7 @@ namespace Dark.Signs
 			sign.labelColor = CommentContentClipboard.copiedColor;
 
 		}
+		// Used by Comp_Sign to add copy/paste gizmos for sign settings
 		public static IEnumerable<Gizmo> CopyPasteGizmosFor(Comp_Sign sign)
 		{
 			yield return new Command_Action

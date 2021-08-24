@@ -114,7 +114,7 @@ namespace Dark.Signs
             listingStandard.CheckboxLabeled("Signs_SettingsToggleToolTipHidesComments".Translate(), ref commentToggleHidesComments, "Signs_SettingsToggleToolTipHidesComments_desc".Translate());
             if (commentToggleHidesComments != lastVal_commentToggleHidesComments && Find.CurrentMap != null)
             {
-                ShowCommentToggle.RefreshAllSigns();
+                DoPlaySettingsGlobalControls_ShowCommentToggle.RefreshAllSigns();
                 lastVal_commentToggleHidesComments = commentToggleHidesComments;
             }
             
