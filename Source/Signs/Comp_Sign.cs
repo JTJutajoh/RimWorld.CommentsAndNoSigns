@@ -23,11 +23,8 @@ namespace Dark.Signs
         {
             get
             {
-                Log.Message("Getting comment graphic");
-                Log.Message(Settings.commentToggleHidesComments.ToString() + " " + (ShowCommentToggle.drawComments == false).ToString() + " " + (this.parent.def.defName == "Comment").ToString());
                 if (Settings.commentToggleHidesComments && ShowCommentToggle.drawComments == false && this.parent.def.defName == "Comment")
                 {
-                    Log.Message("Returning hidden graphic");
                     if (this.HiddenGraphic == null)
                     {
                         this.HiddenGraphic = GraphicDatabase.Get(this.parent.def.graphicData.graphicClass, this.parent.def.graphicData.texPath + "_Hidden",
@@ -102,13 +99,12 @@ namespace Dark.Signs
                     signContent = Props.defaultContents;
                 }
                 
-
                 if (this.editOnPlacement) // If the def says we should edit the comment as soon as it's placed
                 {
                     Find.WindowStack.Add(new Dialog_RenameSign(this));
                 }
 
-                if (this.parent.def.defName == "Comment" && this.parent.Fogged())
+                if (Comp_Sign.BuildableCanGoOverFog(this.parent.def) && this.parent.Fogged())
                 {
                     //Messages.Message("Spawning dummy designation", MessageTypeDefOf.CautionInput, false);
                     DesignationManager designationManager = this.parent.Map.designationManager;
