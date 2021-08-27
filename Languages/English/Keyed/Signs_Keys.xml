@@ -22,6 +22,7 @@
   <Signs_CopyGizmo_desc>Copy this sign's settings so you can paste them onto another sign</Signs_CopyGizmo_desc>
   <Signs_PasteGizmo>Paste Sign</Signs_PasteGizmo>
   <Signs_PasteGizmo_desc>Overwrite this sign's content and settings with those previously copied to the clipboard</Signs_PasteGizmo_desc>
+  <Signs_ColorGizmo>Color</Signs_ColorGizmo>
   <Signs_InspectStringPrefix>Sign Contents:</Signs_InspectStringPrefix>
   <Signs_ToggleToolTip>Toggle visibility of sign labels. Labels can still be seen if a sign is selected.</Signs_ToggleToolTip>
   <Signs_SettingsDisplay>Display settings</Signs_SettingsDisplay>
