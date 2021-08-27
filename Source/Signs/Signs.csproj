@@ -65,18 +65,6 @@
     <Content Include="..\..\About\About.xml">
       <Link>About.xml</Link>
     </Content>
-    <Content Include="..\..\Defs\Designations\CommentDummyDesignation.xml">
-      <Link>Defs\CommentDummyDesignation.xml</Link>
-    </Content>
-    <Content Include="..\..\Defs\SignsDesignatorCategory.xml">
-      <Link>Defs\SignsDesignatorCategory.xml</Link>
-    </Content>
-    <Content Include="..\..\Defs\SignsDesignatorDropdownGroupDefs.xml">
-      <Link>Defs\SignsDesignatorDropdownGroupDefs.xml</Link>
-    </Content>
-    <Content Include="..\..\Defs\ThingDefs_Signs\Buildings_Signs.xml">
-      <Link>Defs\Buildings_Signs.xml</Link>
-    </Content>
     <Content Include="..\..\Languages\English\Keyed\Signs_Keys.xml">
       <Link>Signs_Keys.xml</Link>
     </Content>
@@ -96,6 +84,9 @@
       <Version>2.1.1</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Defs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
