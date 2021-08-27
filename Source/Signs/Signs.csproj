@@ -33,6 +33,10 @@
     <Reference Include="0DarkColourPicker_Forked">
       <HintPath>E:\GameDev\Modding\RimworldMods\ColourPicker-master\ColourPicker-master\net472\0DarkColourPicker_Forked.dll</HintPath>
     </Reference>
+    <Reference Include="Epitaph">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2582007729\Assemblies\Epitaph.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

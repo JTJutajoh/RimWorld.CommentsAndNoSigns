@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 using RimWorld;
 using DarkColourPicker_Forked;
+using Epitaph;
 
 namespace Dark.Signs
 {
@@ -16,6 +18,14 @@ namespace Dark.Signs
         public bool canEditContent => Props.canEditContent;
         public bool editOnPlacement => Props.editOnPlacement;
         public bool isRoomSign => Props.isRoomSign;
+
+        // For compatibility with Epitaphs mod
+        public static Assembly EpitaphAssem;
+        private static bool EpitaphsLoaded = false;
+        private bool hasEpitaph = false; // If this particular Thing has an epitaph comp (Graves/sarcophagi)
+        private static PropertyInfo EpitaphInscriptionProperty; // Used to access the inscription from the epitaph comp
+        private static Type EpitaphCompType; // Used to check if the Thing has an epitaph comp
+        private object EpitaphComp; // For passing to the epitaph rename dialog
 
 
         public bool hideLabelOverride = false;
@@ -51,7 +61,12 @@ namespace Dark.Signs
         {
             get
             {
-                return _signContent;
+                if (hasEpitaph)
+                {
+                    return (string)EpitaphInscriptionProperty.GetValue(EpitaphComp);
+                }
+                else
+                    return _signContent;
             }
             set
             {
@@ -82,6 +97,28 @@ namespace Dark.Signs
             set
             {
                 _labelColor = value;
+            }
+        }
+
+        public Comp_Sign() : base()
+        {
+            // Mod compat patches
+            // Lazy load a reference to the Epitaphs assembly
+            if (EpitaphAssem == null)
+            {
+                foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    if (assembly.FullName.StartsWith("Epitaph"))
+                    {
+                        Log.Message("(Signs) Found Epitaph mod, patching");
+                        EpitaphAssem = assembly;
+                        EpitaphCompType = EpitaphAssem.GetType("Epitaph.Comp_Epitaph");
+                        EpitaphInscriptionProperty = EpitaphCompType.GetProperty("Inscription");
+
+                        EpitaphsLoaded = true;
+                        break;
+                    }
+                }
             }
         }
 
@@ -124,6 +161,22 @@ namespace Dark.Signs
                     Log.Error("Null label color loaded");
                 }
                 RemoveExtraLineEndings();
+            }
+
+            // Mod compat patches
+            if (EpitaphsLoaded)
+            {
+                // Find the epitaph comp
+                foreach (ThingComp comp in parent.AllComps)
+                {
+                    // Check if it is the same type we found in the constructor
+                    if (EpitaphCompType.IsInstanceOfType(comp))
+                    {
+                        EpitaphComp = comp;
+                        hasEpitaph = true;
+                        break;
+                    }
+                }
             }
 
             if (this.parent.def.defName == "Comment")
@@ -263,13 +316,13 @@ namespace Dark.Signs
 
         private IEnumerable<string> DoSignContents()
         {
-            if (this._signContent == null)
+            if (this.signContent == null)
             {
                 yield break;
             }
             else
             {
-                foreach (string s in this._signContent.Split(new[] { "\n", "\r\n", "\r" }, StringSplitOptions.None))
+                foreach (string s in this.signContent.Split(new[] { "\n", "\r\n", "\r" }, StringSplitOptions.None))
                 {
                     
                     yield return s;
@@ -477,6 +530,7 @@ namespace Dark.Signs
                 }
             };
 
+
             if (canEditContent) // Don't add the edit gizmo or the copy/paste gizmos if the sign cannot be edited
             {
                 // Rename/Edit gizmo
@@ -487,11 +541,25 @@ namespace Dark.Signs
                     defaultDesc = "Signs_EditGizmo_desc".Translate(),
                     action = delegate ()
                     {
-                        Find.WindowStack.Add(new Dialog_RenameSign(this));
+                        if (EpitaphsLoaded && hasEpitaph && EpitaphComp != null)
+                        {
+                            
+                            dynamic EpitaphComp_dynamic = EpitaphComp;
+                            object[] ctorargs = { EpitaphComp_dynamic };
+                            Window dlg = (Window)EpitaphAssem.CreateInstance("Epitaph.Dialog_EditEpitaph", false, BindingFlags.CreateInstance, null, ctorargs, null, null);
+                            Find.WindowStack.Add(dlg);
+                        }
+                        else
+                            Find.WindowStack.Add(new Dialog_RenameSign(this));
                     },
                     hotKey = KeyBindingDefOf.Misc1
                 };
 
+                if (hasEpitaph)
+                {
+                    // End early to cut off the remaining gizmos
+                    yield break;
+                }
                 // copy/paste
                 foreach (Gizmo gizmo in CommentContentClipboard.CopyPasteGizmosFor(this))
                 {
@@ -515,6 +583,12 @@ namespace Dark.Signs
         }
         public override string CompInspectStringExtra()
         {
+            if (hasEpitaph)
+            {
+                // Don't modify the inspect string 
+                return "";
+            }
+
             StringBuilder stringBuilder = new StringBuilder();
 
             // Debug stuff
