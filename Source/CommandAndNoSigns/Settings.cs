@@ -5,7 +5,7 @@ using System.Text;
 using Verse;
 using RimWorld;
 using UnityEngine;
-using ColourPicker;
+using DarkColourPicker_Forked;
 
 namespace Dark.Signs
 {
