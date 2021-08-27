@@ -5,6 +5,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 using RimWorld;
+using DarkColourPicker_Forked;
 
 namespace Dark.Signs
 {
@@ -454,6 +455,25 @@ namespace Dark.Signs
                 {
                     SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
                     this.ChangeSize();
+                }
+            };
+
+            // color
+            yield return new Command_Action
+            {
+                icon = ContentFinder<Texture2D>.Get("UI/Gizmo_Colorpicker", true),
+                defaultLabel = "Signs_ColorGizmo".Translate(),
+                defaultDesc = "Signs_SizeGismo_desc".Translate(),
+                iconDrawScale = 1f,
+                action = delegate ()
+                {
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
+                    Find.WindowStack.Add(new Dialog_ColourPicker(this.labelColor,
+                    (newColor) =>
+                    {
+                        this.labelColor = newColor;
+                    }
+                    ));
                 }
             };
 
