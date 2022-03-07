@@ -38,9 +38,11 @@ namespace Dark.Signs
 
         public static void RefreshAllSigns()
         {
+            if (NotifyList == null || NotifyList.Count <= 0) return;
             foreach (Comp_Sign sign in NotifyList)
             {
-                sign.NotifyVisibilityChange();
+                if (sign != null)
+                    sign.NotifyVisibilityChange();
             }
         }
         public static void RegisterForNotify(Comp_Sign inst)
