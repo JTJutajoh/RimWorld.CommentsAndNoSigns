@@ -41,8 +41,7 @@ namespace Dark.Signs
             if (NotifyList == null || NotifyList.Count <= 0) return;
             foreach (Comp_Sign sign in NotifyList)
             {
-                if (sign != null)
-                    sign.NotifyVisibilityChange();
+                sign?.NotifyVisibilityChange();
             }
         }
         public static void RegisterForNotify(Comp_Sign inst)

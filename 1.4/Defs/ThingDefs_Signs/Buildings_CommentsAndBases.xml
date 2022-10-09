@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  
+  <!-- Base -->
+  <ThingDef Name="SignWithCustomLabelBase" ParentName="BuildingBase" Abstract="True">
+    <designationCategory>Dark_Signs</designationCategory>
+    <!--<thingClass>Dark.Signs.Building_Sign</thingClass>-->
+    <!-- the key to everything -->
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <stealable>false</stealable>
+  </ThingDef>
+
+  <!--============================== Comment ==============================-->
+  <ThingDef ParentName="SignWithCustomLabelBase">
+    <defName>Comment</defName>
+    <label>comment</label>
+    <description>Leave comments to plan ahead or mark things to be remembered.#x000AFree to place and builds instantly. Use this for making simple comments to yourself.</description>
+    <comps>
+      <li Class="Dark.Signs.CompProperties_Sign">
+        <canEditContent>true</canEditContent>
+        <editOnPlacement>true</editOnPlacement>
+        <defaultContents>Empty Comment</defaultContents>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+	  <thingClass>Dark.Signs.Building_Comment</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <clearBuildingArea>false</clearBuildingArea>
+    <canOverlapZones>True</canOverlapZones>
+    <fertility>0</fertility>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <pathCost>0</pathCost>
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+    </statBases>
+    <useHitPoints>false</useHitPoints>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <rotatable>false</rotatable>
+    <building>
+      <isInert>true</isInert>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+      <expandHomeArea>false</expandHomeArea>
+      <isEdifice>false</isEdifice>
+      <ai_chillDestination>false</ai_chillDestination>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+    </building>
+    <graphicData>
+      <texPath>Things/Buildings/Signs/Comment</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+  </ThingDef>
+  
+
+</Defs>
