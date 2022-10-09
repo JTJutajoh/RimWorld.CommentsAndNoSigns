@@ -7,7 +7,6 @@ using Verse;
 using Verse.Sound;
 using RimWorld;
 using DarkColourPicker_Forked;
-using Epitaph;
 
 namespace Dark.Signs
 {
@@ -388,7 +387,7 @@ namespace Dark.Signs
             {
                 return Props?.labelOffset_East ?? Props?.labelOffset ?? new Vector2();
             }
-            // shouldn't be possible but maybe
+
             return new Vector2();
         }
 
@@ -407,7 +406,7 @@ namespace Dark.Signs
             Vector2 offset = GetLabelOffset();
             position.x += offset.x;
             position.z += offset.y;
-            position.z += Settings.worldVerticalOffset; // TODO reevaluate this
+            position.z += Settings.worldVerticalOffset; // TODO: reevaluate this
             Vector2 vector = Find.Camera.WorldToScreenPoint(position) / Prefs.UIScale;
             vector.y = (float)UI.screenHeight - vector.y;
             vector.y -= 1f;
