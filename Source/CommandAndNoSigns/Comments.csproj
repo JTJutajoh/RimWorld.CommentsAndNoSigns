@@ -29,6 +29,14 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '1.4|AnyCPU'">
+    <OutputPath>bin\1.4\</OutputPath>
+    <DefineConstants>TRACE;v1_3</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="0DarkColourPicker_Forked">
       <HintPath>E:\GameDev\Modding\RimworldMods\ColourPicker-master\ColourPicker-master\net472\0DarkColourPicker_Forked.dll</HintPath>
