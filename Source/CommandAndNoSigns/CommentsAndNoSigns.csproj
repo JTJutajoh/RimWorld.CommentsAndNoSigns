@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{88E206B5-5BF8-461E-BE70-2C4D401CE5FA}</ProjectGuid>
+    <ProjectGuid>{24A49D5F-2F60-4044-A8A2-B06CC54E3624}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dark.Signs</RootNamespace>
